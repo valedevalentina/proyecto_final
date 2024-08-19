@@ -15,25 +15,22 @@
     }
   </style>
 </head>
-
+<!--Formulario login -->
 <body>
   <section class="home">
- 
     <div class="content">
-  <h1>¡Bienvenido!</h1>
-  <br>
-         <label for="usuario">Usuario</label>
-  <br>
-        <input type="text" class="usuario" placeholder="Ingresa tu usuario">
-      <br>
-        <label for="contraseña">Contraseña</label>
+      <h1>¡Bienvenido!</h1>
+      <div class="form-group">
+        <label class="datos" for="usuario">Usuario</label>
+        <input type="text" id="usuario" class="registro" placeholder="Ingresa tu usuario" required>
         <br>
-        <input type="text" class="contraseña" placeholder="Ingresa tu contraseña">
-        <br>
-        <button class="ingresar">Ingresar</button>
-</div>
+        <label class="datos" for="contraseña">Contraseña</label>
+        <input type="password" id="contraseña" class="registro" placeholder="Ingresa tu contraseña" required>
+      </div>
+      <button id="ingresar">Ingresar</button>
+    </div>
   </section>
- 
+ <!--Formulario login -->
 </main> 
   <footer class="text-muted">
     <div class="container">
