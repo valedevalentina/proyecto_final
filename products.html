@@ -1,48 +1,97 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="frame">
-      <div class="overlap-group-wrapper">
-        <div class="overlap-group">
-          <img class="image" src="img/image-2.png" />
-          <div class="overlap">
-            <div class="overlap">
-              <img class="img" src="img/image-5.png" />
-              <img class="rectangle" src="img/rectangle-1.png" />
-              <img class="inicio" src="img/inicio.png" />
-              <img class="categoras" src="img/categor-as.png" />
-              <img class="vender" src="img/vender.png" />
-              <img class="prod" src="img/prod50921-1-1.png" />
-              <img class="image-2" src="img/image-3.png" />
-            </div>
-            <img class="chevrolet-onix-joy" src="img/chevrolet-onix-joy.png" />
-            <img class="generacin" src="img/generaci-n-2019-variedad-de-colores-motor-1-0-ideal-para-ciudad.png" />
-            <img class="cantidad-de-vendidos" src="img/cantidad-de-vendidos-14.png" />
-            <img class="USD" src="img/USD-13500.png" />
-            <img class="account-circle" src="img/account-circle.svg" />
-            <img class="fiat-way" src="img/fiat-way.png" />
-            <img class="cantidad-de-vendidos-2" src="img/cantidad-de-vendidos-52.png" />
-            <img class="USD-2" src="img/USD-14500.png" />
-            <img
-              class="la-versin-de-fiat"
-              src="img/la-versi-n-de-fiat-que-brinda-confort-y-a-un-precio-accesible.png"
-            />
-          </div>
-          <img class="image-3" src="img/image-4.png" />
-          <img class="suzuki-celerio" src="img/suzuki-celerio.png" />
-          <img class="cantidad-de-vendidos-3" src="img/cantidad-de-vendidos-25.png" />
-          <img class="USD-3" src="img/USD-12500.png" />
-          <img
-            class="un-auto-que-se-ha"
-            src="img/un-auto-que-se-ha-ganado-la-buena-fama-por-su-econom-a-con-el-combustible.png"
-          />
-        </div>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
       </div>
     </div>
-  </body>
+  </nav>
+  <main class="pb-5 container">
+    <div class="container">
+      <div class="car-list">
+        <div class="car-item">
+            <img src="img/prod50921_1.jpg" alt="Chevrolet Onix Joy">
+            <div class="car-info">
+                <h2>Chevrolet Onix Joy</h2>
+                <p>Generación 2019, variedad de colores. Motor 1.0, ideal para ciudad.</p>
+                <p class="price">USD 13500</p>
+                <p>Cantidad de vendidos: 14</p>
+            </div>
+        </div>
+
+        <div class="car-item">
+            <img src="img/prod50922_1.jpg" alt="Fiat Way">
+            <div class="car-info">
+                <h2>Fiat Way</h2>
+                <p>La versión de Fiat que brinda confort y a un precio accesible.</p>
+                <p class="price">USD 14500</p>
+                <p>Cantidad de vendidos: 52</p>
+            </div>
+        </div>
+
+        <div class="car-item">
+            <img src="img/prod50923_1.jpg" alt="Suzuki Celerio">
+            <div class="car-info">
+                <h2>Suzuki Celerio</h2>
+                <p>Un auto que se ha ganado la buena fama por su economía con el combustible.</p>
+                <p class="price">USD 12500</p>
+                <p>Cantidad de vendidos: 25</p>
+            </div>
+        </div>
+    </div>
+
+    
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
+</body>
+
 </html>
