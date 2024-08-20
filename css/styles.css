@@ -5,6 +5,7 @@ body {
   background-repeat: no-repeat; 
   font-family: "Inter";
   font-style: normal;
+  background-attachment: fixed;
 }
 /*body nuevo*/
 
