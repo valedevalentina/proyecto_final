@@ -272,6 +272,7 @@ registro > ::placeholder {
   display: flex;
   align-items: center;
   background-color: #ffffff;
+  border: 1px solid #dfdcdc;
   border-radius: 10px;
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -330,6 +331,7 @@ p.soldCount {
   font-size: 16px;
   border: 1px solid #818080;
   border-radius: 4px;
+  text-indent: 0.3cm;
 }
 
 /* termina el estilo de products.html */
