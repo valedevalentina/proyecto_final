@@ -223,7 +223,6 @@ a.custom-card:hover {
   margin-top: 10%;
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
 .content h1 {
@@ -252,7 +251,7 @@ a.custom-card:hover {
   margin: 0;
 }
 
-::placeholder {
+registro > ::placeholder {
   text-align: justify;
   font-size: 15px;
   text-indent: 0.3cm;
@@ -277,6 +276,7 @@ a.custom-card:hover {
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.2s;
+  margin-top: 10px;
 }
 
 .product-item:hover {
@@ -314,6 +314,22 @@ p.price {
 
 p.soldCount {
   font-size: 13px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: right;
+  margin: 20px 100px 20px 0;
+
+}
+
+#search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #818080;
+  border-radius: 4px;
 }
 
 /* termina el estilo de products.html */
