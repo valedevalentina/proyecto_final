@@ -210,10 +210,11 @@ a.custom-card:hover {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
-  background-color: #2F2525
+  background-color: #2F2525;
+  text-align: center;
 }
 
-.content label {
+.content .datos {
   color: #D9D9D9;
   font-size: 17px;
   text-align: left;
@@ -249,7 +250,6 @@ a.custom-card:hover {
   height: 100vh;
   margin: 0;
 }
-
 
 ::placeholder {
   text-align: justify;
