@@ -267,8 +267,6 @@ a.custom-card:hover {
 
 /* termina el estilo del formulario login */
 
-
-
 /* empieza el estilo de products.html */
 
 .product-item {
@@ -297,21 +295,25 @@ a.custom-card:hover {
 }
 
 .product-item h2 {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 25px;
   margin: 0;
+  color: #000000;
 }
 
 .product-item p {
-  font-size: 14px;
-  color: #555;
+  font-size: 15px;
+  color: #000000;
   margin: 5px 0;
 }
 
-.price {
-  font-size: 16px;
-  color: #28a745;
+p.price {
+  font-size: 18px;
+  color: #000000;
   margin-top: 10px;
+}
+
+p.soldCount {
+  font-size: 13px;
 }
 
 /* termina el estilo de products.html */
