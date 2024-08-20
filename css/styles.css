@@ -3,8 +3,8 @@ body {
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
-  font-family: sans-serif; 
-  
+  font-family: "Inter";
+  font-style: normal;
 }
 /*body nuevo*/
 
@@ -12,7 +12,8 @@ body {
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
+  font-family: 'Inter';
+  font-style: normal;
 }
 
 .jumbotron .display-4 {
@@ -268,59 +269,49 @@ a.custom-card:hover {
 
 
 
-
 /* empieza el estilo de products.html */
 
-.car-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 800px;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.car-item {
+.product-item {
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 150px; /* Altura mínima de las cajas */
-}
-
-.car-item img {
-  width: auto;
-  height: 100%; /* La imagen ocupará toda la altura de la caja */
-  object-fit: cover;
-  max-width: 250px; /* Ajusta este valor según necesites */
-}
-
-.car-info {
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  transition: transform 0.2s;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-item img {
+  max-width: 250px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.product-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
 }
 
-.car-info h2 {
+.product-item h2 {
+  font-size: 24px;
+  font-weight: bold;
   margin: 0;
-  font-size: 1.5rem;
 }
 
-.car-info p {
-  margin: 5px 0;
+.product-item p {
+  font-size: 14px;
   color: #555;
+  margin: 5px 0;
 }
 
 .price {
-  color: #333;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 16px;
+  color: #28a745;
+  margin-top: 10px;
 }
 
 /* termina el estilo de products.html */

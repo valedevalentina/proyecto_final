@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
 <body>
@@ -36,43 +37,12 @@
       </div>
     </div>
   </nav>
+ 
   <main class="pb-5 container">
-    <div class="container">
-      <div class="car-list">
-        <div class="car-item">
-            <img src="img/prod50921_1.jpg" alt="Chevrolet Onix Joy">
-            <div class="car-info">
-                <h2>Chevrolet Onix Joy</h2>
-                <p>Generación 2019, variedad de colores. Motor 1.0, ideal para ciudad.</p>
-                <p class="price">USD 13500</p>
-                <p>Cantidad de vendidos: 14</p>
-            </div>
-        </div>
-
-        <div class="car-item">
-            <img src="img/prod50922_1.jpg" alt="Fiat Way">
-            <div class="car-info">
-                <h2>Fiat Way</h2>
-                <p>La versión de Fiat que brinda confort y a un precio accesible.</p>
-                <p class="price">USD 14500</p>
-                <p>Cantidad de vendidos: 52</p>
-            </div>
-        </div>
-
-        <div class="car-item">
-            <img src="img/prod50923_1.jpg" alt="Suzuki Celerio">
-            <div class="car-info">
-                <h2>Suzuki Celerio</h2>
-                <p>Un auto que se ha ganado la buena fama por su economía con el combustible.</p>
-                <p class="price">USD 12500</p>
-                <p>Cantidad de vendidos: 25</p>
-            </div>
-        </div>
-    </div>
-
-    
-    </div>
+    <div id="product-list" class="produtc-list"></div>
+    <script src="js/products.js"></script>
   </main>
+ 
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -83,15 +53,11 @@
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
+
 </body>
 
 </html>
