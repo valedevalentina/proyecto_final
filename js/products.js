@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="product-info">
                             <h2>${product.name}</h2>
                             <p>${product.description}</p>
+                            <p></p>
                             <p class="price">${product.currency} ${product.cost.toFixed(2)}</p>
                             <p class="soldCount">Cantidad de vendidos: ${product.soldCount}</p>
                         </div>
