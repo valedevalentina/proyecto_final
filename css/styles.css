@@ -3,8 +3,8 @@ body {
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
-  font-family: sans-serif; 
-  
+  font-family: "Inter";
+  font-style: normal;
 }
 /*body nuevo*/
 
@@ -12,7 +12,8 @@ body {
 .card-body,
 .container,
 .site-header {
-  font-family: 'Verdana', serif !important;
+  font-family: 'Inter';
+  font-style: normal;
 }
 
 .jumbotron .display-4 {
@@ -210,10 +211,11 @@ a.custom-card:hover {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
-  background-color: #2F2525
+  background-color: #2F2525;
+  text-align: center;
 }
 
-.content label {
+.content .datos {
   color: #D9D9D9;
   font-size: 17px;
   text-align: left;
@@ -221,7 +223,6 @@ a.custom-card:hover {
   margin-top: 10%;
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
 .content h1 {
@@ -250,7 +251,6 @@ a.custom-card:hover {
   margin: 0;
 }
 
-
 ::placeholder {
   text-align: justify;
   font-size: 15px;
@@ -266,61 +266,72 @@ a.custom-card:hover {
 
 /* termina el estilo del formulario login */
 
-
-
-
 /* empieza el estilo de products.html */
 
-.car-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 800px;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.car-item {
+.product-item {
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  border: 1px solid #dfdcdc;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 150px; /* Altura mínima de las cajas */
-}
-
-.car-item img {
-  width: auto;
-  height: 100%; /* La imagen ocupará toda la altura de la caja */
-  object-fit: cover;
-  max-width: 250px; /* Ajusta este valor según necesites */
-}
-
-.car-info {
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  transition: transform 0.2s;
+  margin-top: 10px;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-item img {
+  max-width: 250px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.product-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
 }
 
-.car-info h2 {
+.product-item h2 {
+  font-size: 25px;
   margin: 0;
-  font-size: 1.5rem;
+  color: #000000;
 }
 
-.car-info p {
+.product-item p {
+  font-size: 15px;
+  color: #000000;
   margin: 5px 0;
-  color: #555;
 }
 
-.price {
-  color: #333;
-  font-weight: bold;
-  font-size: 1.2rem;
+p.price {
+  font-size: 18px;
+  color: #000000;
+  margin-top: 10px;
+}
+
+p.soldCount {
+  font-size: 13px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: right;
+  margin: 20px 101px 20px 0;
+
+}
+
+#search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #818080;
+  border-radius: 4px;
+  text-indent: 0.3cm;
 }
 
 /* termina el estilo de products.html */
