@@ -264,6 +264,23 @@ a.custom-card:hover {
   width: 350px;
   border-radius: 10px;
   height: 40px;
+  text-indent: 0.3cm;
+  position: relative;
+}
+
+#contrasena input {
+  padding-right: 2.5rem;  /* Espacio para el icono */
+}
+
+.form-group i {
+  position: absolute;
+  right: 47rem;
+  top: 498px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: rgb(47,37,37);
+  pointer-events: auto; /* Asegura que sea clickeable */
+  font-size: 1rem; /* Asegura un tamaño constante del ícono */
 }
 
 /* termina el estilo del formulario login */
