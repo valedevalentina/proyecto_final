@@ -18,6 +18,18 @@ if (valid) {
 } else {
     document.getElementById("alert-danger").classList.add("show");
 }
+
 })
 
 
+const togglePassword = document.querySelector('#togglePassword');
+const contrasena = document.querySelector('#contrasena');
+
+togglePassword.addEventListener('click', function (e) {
+// Alternar el tipo de input
+const type = contrasena.getAttribute('type') === 'password' ? 'text' : 'password';
+contrasena.setAttribute('type', type);
+
+// Cambiar el ícono
+this.classList.toggle('fa-eye-slash');
+});

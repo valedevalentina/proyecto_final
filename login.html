@@ -10,6 +10,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -26,12 +27,16 @@
         <input type="text" id="usuario" class="registro" placeholder="Ingresa tu usuario" required>
         <br>
         <label class="datos" for="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" class="registro" placeholder="Ingresa tu contraseña" required>
-      </div>
+        <div class="password-container">
+          <input type="password" id="contrasena" class="registro" placeholder="Ingresa tu contraseña" required>
+          <span class="toggle-password">
+            <i class="fa fa-eye" id="togglePassword"></i>
+          </span>
+        </div>
       <button id="ingresar" class="form-group">Ingresar</button>
     </div>
   </section>
-  
+
  <!--Formulario login -->
 </main> 
   <footer class="text-muted">
