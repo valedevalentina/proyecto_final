@@ -268,7 +268,6 @@ a.custom-card:hover {
   width: 100%; /* Mantén el ancho completo del input */
 }
 
-<<<<<<< HEAD
 /* termina el estilo del formulario login */
 /* Ojito: */
 .password-container {
@@ -276,19 +275,13 @@ a.custom-card:hover {
   width: 100%; /* Mantén el ancho completo del input */
 }
 
-=======
->>>>>>> fabi
 .registro {
   width: 80%; /* Mantén el ancho del input */
   padding-right: 30px; /* Espacio suficiente para el ícono dentro del input */
   box-sizing: border-box; /* Asegura que el padding se incluye en el ancho total */
   border-radius: 10px;
   height: 40px;
-<<<<<<< HEAD
-=======
   text-indent: 0.3cm;
->>>>>>> fabi
-  border: 1px solid #ccc; /* Puedes ajustar el estilo del borde si es necesario */
 }
 
 .toggle-password {
@@ -303,12 +296,8 @@ a.custom-card:hover {
   font-size: 18px;
   color: #888;
 }
-<<<<<<< HEAD
 
 
-=======
-/* termina ojito */
->>>>>>> fabi
 
 /* empieza el estilo de products.html */
 
