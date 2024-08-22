@@ -15,7 +15,7 @@ ingresar.addEventListener("click", function() {
 
     if (valid) {
         // Guardar la sesión en sessionStorage
-        sessionStorage.setItem('sesionIniciada', 'true');
+        localStorage.setItem('sesionIniciada', 'true');
         // Redireccionar a la página principal
         location.replace("index.html");
     } else {

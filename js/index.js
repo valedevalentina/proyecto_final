@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Verificar si la sesión está iniciada
-    const sesionIniciada = sessionStorage.getItem('sesionIniciada');
+    const sesionIniciada = localStorage.getItem('sesionIniciada');
     const botonUsuario = document.getElementById('boton-usuario');
 
     if (!sesionIniciada) {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
         botonUsuario.textContent = "Cerrar Sesión";
         // Cambiar funcionalidad del botón
         botonUsuario.addEventListener("click", function() {
-            sessionStorage.removeItem('sesionIniciada');
+            localStorage.removeItem('sesionIniciada');
             location.replace("login.html"); // Redirigir al login al cerrar sesión
         });
     } else {
