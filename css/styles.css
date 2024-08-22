@@ -5,6 +5,7 @@ body {
   background-repeat: no-repeat; 
   font-family: "Inter";
   font-style: normal;
+  background-attachment: fixed;
 }
 /*body nuevo*/
 
@@ -21,7 +22,8 @@ body {
 }
 
 nav a {
-  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }
 
 .bd-placeholder-img {
@@ -258,13 +260,55 @@ a.custom-card:hover {
   width: 200px;
 }
 
-.registro {
-  width: 350px;
-  border-radius: 10px;
-  height: 40px;
+/* termina el estilo del formulario login */
+
+/* Ojito: */
+.password-container {
+  position: relative;
+  width: 100%; /* Mantén el ancho completo del input */
 }
 
+<<<<<<< HEAD
 /* termina el estilo del formulario login */
+/* Ojito: */
+.password-container {
+  position: relative;
+  width: 100%; /* Mantén el ancho completo del input */
+}
+
+=======
+>>>>>>> fabi
+.registro {
+  width: 80%; /* Mantén el ancho del input */
+  padding-right: 30px; /* Espacio suficiente para el ícono dentro del input */
+  box-sizing: border-box; /* Asegura que el padding se incluye en el ancho total */
+  border-radius: 10px;
+  height: 40px;
+<<<<<<< HEAD
+=======
+  text-indent: 0.3cm;
+>>>>>>> fabi
+  border: 1px solid #ccc; /* Puedes ajustar el estilo del borde si es necesario */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 60px; /* Ajusta la posición del ícono dentro del campo */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-password i {
+  font-size: 18px;
+  color: #888;
+}
+<<<<<<< HEAD
+
+
+=======
+/* termina ojito */
+>>>>>>> fabi
 
 /* empieza el estilo de products.html */
 
