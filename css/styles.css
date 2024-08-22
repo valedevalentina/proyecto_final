@@ -22,7 +22,8 @@ body {
 }
 
 nav a {
-  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }
 
 .bd-placeholder-img {
