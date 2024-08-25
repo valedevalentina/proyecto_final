@@ -268,13 +268,6 @@ a.custom-card:hover {
   width: 100%; /* Mantén el ancho completo del input */
 }
 
-/* termina el estilo del formulario login */
-/* Ojito: */
-.password-container {
-  position: relative;
-  width: 100%; /* Mantén el ancho completo del input */
-}
-
 .registro {
   width: 80%; /* Mantén el ancho del input */
   padding-right: 30px; /* Espacio suficiente para el ícono dentro del input */
