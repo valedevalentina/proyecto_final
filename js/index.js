@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Verificar si la sesión está iniciada
     const sesionIniciada = localStorage.getItem('sesionIniciada');
+    const userEmail = localStorage.getItem('userEmail')
     const botonUsuario = document.getElementById('boton-usuario');
 
     if (!sesionIniciada) {
@@ -9,20 +10,16 @@ document.addEventListener("DOMContentLoaded", function(){
         return; // Evitar que se ejecute el resto del código
     }
     
-    if (sesionIniciada) {
-        // Cambiar texto del botón a "Cerrar Sesión"
-        botonUsuario.textContent = "Cerrar Sesión";
-        // Cambiar funcionalidad del botón
+    if (sesionIniciada && userEmail) {
+        // Cambiar texto del botón al email del usuario
+        botonUsuario.textContent = userEmail;
+        // Cambiar funcionalidad del botón para cerrar sesión
         botonUsuario.addEventListener("click", function() {
             localStorage.removeItem('sesionIniciada');
+            localStorage.removeItem('userEmail');
             location.replace("login.html"); // Redirigir al login al cerrar sesión
         });
-    } else {
-        // Funcionalidad del botón de Login
-        botonUsuario.addEventListener("click", function() {
-            location.replace("login.html"); // Redirigir al login si no está iniciado
-        });
-    }
+    } 
     
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
