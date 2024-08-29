@@ -1,5 +1,5 @@
 body {
-  background-image: url(../img/Desktop\ -\ 1.png); 
+  background-image: url(../img/Desktop-1.png); 
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
@@ -7,6 +7,25 @@ body {
   font-style: normal;
   background-attachment: fixed;
 }
+
+/* Background Para pantallas pequeñas como móviles */
+@media (max-width: 600px) {
+  body {
+    background-image: url(../img/destokp-mobile.png); /* Versión optimizada para móviles */
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Backgrpud Para tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    background-image: url(../img/destokp-tablet.png); /* Versión optimizada para tablets */
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 /*body nuevo*/
 
 .jumbotron,
@@ -219,7 +238,7 @@ a.custom-card:hover {
 
 .content .datos {
   color: #D9D9D9;
-  font-size: 17px;
+  font-size: 1.1rem;
   text-align: left;
   margin-left: 13%;
   margin-top: 10%;
@@ -255,9 +274,16 @@ a.custom-card:hover {
 
 ::placeholder {
   text-align: justify;
-  font-size: 15px;
+  font-size: 1rem;
   text-indent: 0.3cm;
   width: 200px;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
 /* termina el estilo del formulario login */
@@ -279,18 +305,43 @@ a.custom-card:hover {
 
 .toggle-password {
   position: absolute;
-  right: 60px; /* Ajusta la posición del ícono dentro del campo */
+  right: 13%; /* Ajusta la posición del ícono dentro del campo */
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
 }
 
 .toggle-password i {
-  font-size: 18px;
+  font-size: 1.2rem;
   color: #888;
 }
 
+/* F Para pantallas pequeñas como móviles */
+@media (max-width: 600px) {
+  .content {
+    max-width: 70%;
+    max-height: 70%;
+  }
+  
+  .content .datos{
+    margin-top: 20%;
+    font-size: 1rem;
+  }
 
+  #ingresar{
+    max-width: 70%;
+    margin-top: 30%;
+    font-size: 1rem;
+  }
+
+  ::placeholder {
+    font-size: 0.8rem;
+  }
+
+  .toggle-password i {
+    font-size: 1rem;
+  }
+}
 
 /* empieza el estilo de products.html */
 
