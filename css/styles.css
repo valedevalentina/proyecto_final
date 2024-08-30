@@ -279,13 +279,6 @@ a.custom-card:hover {
   width: 200px;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
 /* termina el estilo del formulario login */
 
 /* Ojito: */
