@@ -4,8 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('search-bar');
 
     // URL del JSON
-    const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+    const id = localStorage.getItem("catID");
+    const url = `https://japceibal.github.io/emercado-api/cats_products/${id}.json`;
+  //*  const url = "https://japceibal.github.io/emercado-api/cats_products/" + id + ".json"; *//
 
+console.log(url);
     // Función para obtener los productos desde la URL
     fetch(url)
         .then(response => response.json())
