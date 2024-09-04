@@ -43,7 +43,25 @@
   </div>
 
   <main class="pb-5 container">
-    <div id="product-list" class="produtc-list">
+      <!-- Controles de Filtrado -->
+    <div class="filter-controls mb-3">
+      <h2>Filtrar por precio</h2>
+      <label for="min-price">Precio Mínimo:</label>
+      <input type="number" id="min-price" placeholder="0" min="0">
+  
+      <label for="max-price">Precio Máximo:</label>
+      <input type="number" id="max-price" placeholder="1000" min="0">
+      <button id="filter-button" class="btn btn-primary">Filtrar</button>
+    </div>
+  
+    <!-- Controles de Orden -->
+    <div class="sort-controls mb-3">
+      <h2>Ordenar productos</h2>
+      <button id="sort-price-asc" class="btn btn-secondary">Precio: Ascendente</button>
+      <button id="sort-price-desc" class="btn btn-secondary">Precio: Descendente</button>
+      <button id="sort-relevance-desc" class="btn btn-secondary">Relevancia: Descendente</button>
+    </div>
+    <div id="product-list" class="product-list">
       <!-- Aquí se insertarán los productos -->
     </div>
     <script src="js/products.js"></script>
