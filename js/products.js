@@ -2,13 +2,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('product-list');
     const searchBar = document.getElementById('search-bar');
-
+    
+    const minPriceInput = document.getElementById("min-price");
+    const maxPriceInput = document.getElementById("max-price");
+    const filterButton = document.getElementById("filter-button");
+    const sortPriceAscButton = document.getElementById("sort-price-asc");
+    const sortPriceDescButton = document.getElementById("sort-price-desc");
+    const sortRelevanceDescButton = document.getElementById("sort-relevance-desc");
+    
     // URL del JSON
     const id = localStorage.getItem("catID");
     const url = `https://japceibal.github.io/emercado-api/cats_products/${id}.json`;
-  //*  const url = "https://japceibal.github.io/emercado-api/cats_products/" + id + ".json"; *//
 
-console.log(url);
     // Función para obtener los productos desde la URL
     fetch(url)
         .then(response => response.json())
@@ -39,6 +44,35 @@ console.log(url);
 
             // Mostrar todos los productos inicialmente
             displayProducts(products);
+
+                        // Filtrar productos por rango de precio
+                        filterButton.addEventListener("click", () => {
+                            const minPrice = parseFloat(minPriceInput.value) || 0;
+                            const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+                            const filteredProducts = products.filter(product =>
+                                product.cost >= minPrice && product.cost <= maxPrice
+                            );
+                            displayProducts(filteredProducts);
+                        });
+            
+                        // Ordenar productos por precio ascendente
+                        sortPriceAscButton.addEventListener("click", () => {
+                            const sortedProducts = [...products].sort((a, b) => a.cost - b.cost);
+                            displayProducts(sortedProducts);
+                        });
+            
+                        // Ordenar productos por precio descendente
+                        sortPriceDescButton.addEventListener("click", () => {
+                            const sortedProducts = [...products].sort((a, b) => b.cost - a.cost);
+                            displayProducts(sortedProducts);
+                        });
+            
+                        // Ordenar productos por relevancia descendente (cantidad de vendidos)
+                        sortRelevanceDescButton.addEventListener("click", () => {
+                            const sortedProducts = [...products].sort((a, b) => b.soldCount - a.soldCount);
+                            displayProducts(sortedProducts);
+                        });
+            
 
             // Filtrar los productos en función de la entrada en la barra de búsqueda
             searchBar.addEventListener('input', () => {
