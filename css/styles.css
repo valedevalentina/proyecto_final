@@ -1,9 +1,16 @@
+
+@font-face {
+  font-family: 'MiFuentePersonalizada'; 
+  src: url('../webfonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype'); 
+} 
+
 body {
   background-image: url(../img/Desktop-1.png); 
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
-  font-family: "Inter";
+  font-family: 'MiFuentePersonalizada', sans-serif;
+  /*font-family: "Inter";*/
   font-style: normal;
   background-attachment: fixed;
 }
@@ -32,9 +39,10 @@ body {
 .card-body,
 .container,
 .site-header {
-  font-family: 'Inter';
+  font-family:'MiFuentePersonalizada', sans-serif;
+  /*font-family: 'Inter';*/
   font-style: normal;
-}
+} 
 
 .jumbotron .display-4 {
   font-weight: bold;
