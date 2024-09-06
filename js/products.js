@@ -1,4 +1,9 @@
 
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('product-list');
     const searchBar = document.getElementById('search-bar');
@@ -25,17 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 productList.innerHTML = '';
                 productsToShow.forEach(product => {
                     const productItem = document.createElement('div');
-                    productItem.classList.add('product-item');
+                   // productItem.classList.add('product-item');
 
                     productItem.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}">
+                    <div onclick="setProductID(${product.id})" class="product-item cursor-active">    
+                    <img src="${product.image}" alt="${product.name}">
                         <div class="product-info">
                             <h2>${product.name}</h2>
                             <p>${product.description}</p>
-                            <p></p>
+                            </br>
                             <p class="price">${product.currency} ${product.cost.toFixed(0)}</p>
                             <p class="soldCount">Cantidad de vendidos: ${product.soldCount}</p>
                         </div>
+                    </div>    
                     `;
 
                     productList.appendChild(productItem);
