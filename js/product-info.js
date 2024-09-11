@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const productInfo = document.getElementById('product-info');
+    const productInfo = document.getElementById('product-info-container');
 
-    // URL del JSON
     const id = localStorage.getItem("catID");
+    const pid = localStorage.getItem("productID");
     const url = `https://japceibal.github.io/emercado-api/cats_products/${id}.json`;
-    const productID = parseInt(localStorage.getItem("productID"), 10);  // Asegúrate de convertirlo a número
+    const productID = parseInt(localStorage.getItem("productID"), 10);
 
     fetch(url)
         .then(response => response.json())
@@ -15,30 +15,40 @@ document.addEventListener('DOMContentLoaded', () => {
             const product = products.find(p => p.id === productID);
 
             if (product) {
-                // Mostrar la información del producto
+                let thumbnails = '';
+                for (let i = 1; i <= 4; i++) {
+                    const imagePath = `img/prod${pid}_${i}.jpg`;
+                    thumbnails += `<img src="${imagePath}" class="thumbnail" alt="${product.name}" data-image="${imagePath}">`;
+                }
+
+                const mainImage = `${product.image}`;
+
+                // Insertar el contenido de los productos usando insertAdjacentHTML
                 productInfo.innerHTML = `
-                    <h2>${product.name}</h2>
-                    <p>${product.description}</p>
-                    <p class="price">${product.currency} ${product.cost.toFixed(0)}</p>
-                    <p class="soldCount">Cantidad de vendidos: ${product.soldCount}</p>
-                    <p class="catName">Categoría: ${catName}</p>
-                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="${product.image}" class="d-block w-100" alt="${product.name}">
-                            </div>
-                            <!-- Puedes añadir más imágenes si es necesario -->
+                    <div id="product-images">
+                        <div id="thumbnail-list">
+                            ${thumbnails}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        <img id="main-product-image" src="${mainImage}" alt="${product.name}">
+                    </div>
+                    <div id="product-details">
+                        <h2>${product.name}</h2>
+                        <p>${product.description}</p>
+                        <p class="price">${product.currency} ${product.cost.toFixed(0)}</p>
+                        <p class="soldCount">Cantidad de vendidos: ${product.soldCount}</p>
+                        <div class="btn-group">
+                            <button>Comprar ahora</button>
+                            <button>Agregar al carrito</button>
+                        </div>
                     </div>
                 `;
+
+                // Cambiar la imagen principal al hacer clic en una miniatura
+                document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+                    thumbnail.addEventListener('click', function () {
+                        document.getElementById('main-product-image').src = this.dataset.image;
+                    });
+                });
             } else {
                 productInfo.innerHTML = '<p>Producto no encontrado</p>';
             }
