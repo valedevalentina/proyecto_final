@@ -1,209 +1,338 @@
-.frame {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+ @font-face {
+  font-family: 'MiFuentePersonalizada'; 
+  src: url('../webfonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype'); 
+} 
+
+body {
+  background-image: url(../img/Desktop-1.png); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  font-family: 'MiFuentePersonalizada', sans-serif;
+  /*font-family: "Inter";*/
+  font-style: normal;
+  background-attachment: fixed;
 }
 
-.frame .overlap-group-wrapper {
-  background-color: #ffffff;
-  width: 1440px;
-  height: 1008px;
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family:'MiFuentePersonalizada', sans-serif;
+  /*font-family: 'Inter';*/
+  font-style: normal;
+} 
+
+.jumbotron .display-4 {
+  font-weight: bold;
 }
 
-.frame .overlap-group {
+nav a {
+  color: white;
+  font-size: 18px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.jumbotron {
+  height: 50vh;
+  padding: 5em inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
+  background: url('../img/cover_back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.jumbotron .lead {
+  font-size: 38px;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.site-header a {
+  color: white;
+  transition: ease-in-out color .15s;
+}
+
+.site-header .dropdown-menu a {
+  color: black;
+}
+
+.dropzone {
+  border: 2px dashed #0087F7;
+  border-radius: 5px;
+  background: white;
+}
+
+.img-fit {
+  max-height: 100%;
+}
+
+.alert {
+  position: fixed;
+  top: 80px;
+  width: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.lds-ring {
+  display: inline-block;
   position: relative;
-  height: 1008px;
-  background-image: url(./img/rectangle-3.png);
-  background-size: 100% 100%;
+  width: 64px;
+  height: 64px;
+  top: 50%;
+  left: 50%;
 }
 
-.frame .image {
-  width: 128px;
-  height: 133px;
-  top: 875px;
-  left: 1312px;
-  position: absolute;
-  object-fit: cover;
+.cursor-active {
+  cursor: pointer;
 }
 
-.frame .overlap {
+.left {
+  float: left;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
   position: absolute;
-  width: 1440px;
-  height: 648px;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+#spinner-wrapper {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
+  z-index: 1021;
+  display: none;
 }
 
-.frame .img {
-  width: 168px;
-  height: 515px;
-  top: 70px;
-  left: 0;
-  position: absolute;
+main {
+  min-height: calc(100vh - 210px);
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Contenedor principal */
+#product-info-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 5% auto;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de las imágenes */
+#product-images {
+  display: flex;
+  gap: 20px;
+}
+
+/* Imagen principal */
+#main-product-image {
+  width: 600px;
+  max-height: 400px;
   object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.frame .rectangle {
-  position: absolute;
-  width: 1440px;
-  height: 74px;
-  top: 0;
-  left: 0;
+/* Lista de miniaturas */
+#thumbnail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.frame .inicio {
-  position: absolute;
-  width: 66px;
-  height: 21px;
-  top: 26px;
-  left: 30px;
-}
 
-.frame .categoras {
-  position: absolute;
-  width: 141px;
-  height: 28px;
-  top: 24px;
-  left: 650px;
-}
-
-.frame .vender {
-  position: absolute;
-  width: 93px;
-  height: 21px;
-  top: 27px;
-  left: 1318px;
-}
-
-.frame .prod {
-  position: absolute;
-  width: 327px;
-  height: 200px;
-  top: 187px;
-  left: 81px;
+#thumbnail-list img {
+  width: 100px;
+  height: 90px;
   object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
-.frame .image-2 {
-  width: 327px;
-  height: 200px;
-  top: 448px;
-  left: 81px;
-  position: absolute;
-  object-fit: cover;
+#thumbnail-list img:hover {
+  border-color: #ff7a00;
 }
 
-.frame .chevrolet-onix-joy {
-  position: absolute;
-  width: 354px;
-  height: 38px;
-  top: 191px;
-  left: 439px;
+/* Contenedor de la descripción */
+#product-details {
+  flex: 1;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.frame .generacin {
-  position: absolute;
-  width: 632px;
-  height: 20px;
-  top: 241px;
-  left: 438px;
+#product-details h2 {
+  font-size: 2.2rem;
 }
 
-.frame .cantidad-de-vendidos {
-  width: 178px;
-  top: 345px;
-  position: absolute;
-  height: 11px;
-  left: 438px;
+#product-details p {
+  font-size: 1.2rem;
+  margin-top: 10%;
+  text-align: left;
 }
 
-.frame .USD {
-  width: 130px;
-  top: 305px;
-  position: absolute;
-  height: 19px;
-  left: 439px;
+#product-details .price {
+  font-size: 1.8rem;
+  color: rgb(0, 0, 0);
+  justify-content: end;
 }
 
-.frame .account-circle {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  top: 89px;
-  left: 1352px;
+#product-details .soldCount {
+  font-size: 1rem;
+  color: #777;
+  align-items: end;
 }
 
-.frame .fiat-way {
-  position: absolute;
-  width: 156px;
-  height: 38px;
-  top: 450px;
-  left: 441px;
+#product-details .btn-group {
+  display: flex;
+  gap: 5px;
+  align-items: end;
 }
 
-.frame .cantidad-de-vendidos-2 {
-  width: 180px;
-  top: 601px;
-  position: absolute;
-  height: 11px;
-  left: 438px;
+#product-details button {
+  flex: 1;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #ee8523;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.frame .USD-2 {
-  width: 130px;
-  top: 564px;
-  position: absolute;
-  height: 19px;
-  left: 439px;
+#product-details button:hover {
+  background-color: #ee8523;
 }
 
-.frame .la-versin-de-fiat {
-  position: absolute;
-  width: 573px;
-  height: 20px;
-  top: 498px;
-  left: 439px;
+/* Media queries para el diseño responsivo */
+@media (max-width: 768px) {
+  #product-info-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #product-details h2 {
+    font-size: 1.5rem;
+  }
+
+  #product-details p, .price {
+    font-size: 1rem;
+  }
+
+  #product-images {
+    align-items: left;
+  }
+
+  #thumbnail-list img {
+    width: 20%;
+    height: auto;
+  }
 }
 
-.frame .image-3 {
-  width: 327px;
-  height: 200px;
-  top: 700px;
-  left: 81px;
-  position: absolute;
-  object-fit: cover;
-}
-
-.frame .suzuki-celerio {
-  position: absolute;
-  width: 265px;
-  height: 31px;
-  top: 708px;
-  left: 439px;
-}
-
-.frame .cantidad-de-vendidos-3 {
-  width: 180px;
-  top: 859px;
-  position: absolute;
-  height: 11px;
-  left: 438px;
-}
-
-.frame .USD-3 {
-  width: 129px;
-  top: 822px;
-  position: absolute;
-  height: 19px;
-  left: 439px;
-}
-
-.frame .un-auto-que-se-ha {
-  position: absolute;
-  width: 735px;
-  height: 20px;
-  top: 756px;
-  left: 439px;
-}
