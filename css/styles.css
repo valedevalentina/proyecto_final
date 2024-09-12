@@ -491,6 +491,44 @@ p.soldCount {
   p.price {
     font-size: 16px;
   }
+    .sort-controls .icono {
+    display: none; /* Ocultar flechas inicialmente */
+  }
+  
+  @media (max-width: 576px) {
+    /* En pantallas pequeñas, ocultar el texto y mostrar las flechas */
+    .sort-controls .texto {
+      display: none; /* Ocultar el texto */
+    }
+    .sort-controls{
+      margin-left: 10%;
+    }
+    .filter-controls  {
+      margin-left: 10%;
+      margin-top: 5%;
+    }
+    .filter-controls h2{
+      font-size: 12px;
+    }
+    .filter-controls label{
+      font-size: 9px;
+    }
+    #filter-button {
+     
+      margin-top: 10%;
+    }
+  
+    .sort-controls .icono {
+      display: inline;
+      font-size: 5px;
+      padding: 0,1px;   
+    margin: 0,1px; 
+    }
+  }
+  .sort-controls h2 {
+    font-size: 10px;
+  }
+
 }
 
 /* termina el estilo de products.html */
