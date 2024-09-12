@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
+  
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -53,13 +54,24 @@
       <button id="filter-button" class="btn btn-primary">Filtrar</button>
     </div>
   
-    <!-- Controles de Orden -->
-    <div class="sort-controls mb-3">
-      <p>Ordenar productos</p>
-      <button id="sort-price-asc" class="btn btn-secondary">Precio: Ascendente</button>
-      <button id="sort-price-desc" class="btn btn-secondary">Precio: Descendente</button>
-      <button id="sort-relevance-desc" class="btn btn-secondary">Relevancia: Descendente</button>
-    </div>
+<!-- Controles de Orden -->
+<div class="sort-controls mb-3">
+  <h2>Ordenar productos</h2>
+  <button id="sort-price-asc" class="btn btn-secondary">
+    <span class="texto">Precio: Ascendente</span>
+    <span class="icono">▲</span>
+    <!-- Flecha hacia arriba -->
+  </button>
+  <button id="sort-price-desc" class="btn btn-secondary">
+    <span class="texto">Precio: Descendente</span>
+    <span class="icono">▼</span>
+    <!-- Flecha hacia abajo -->
+  </button>
+<button id="sort-relevance-desc" class="btn btn-secondary">
+  <span class="texto">Relevancia: Descendente</span>
+</button>
+</div>
+    
     
     <div id="product-list" class="product-list">
       <!-- Aquí se insertarán los productos -->
