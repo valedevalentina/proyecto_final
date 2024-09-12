@@ -336,3 +336,10 @@ a.custom-card:hover {
   }
 }
 
+#category-name {
+  margin-top: 20px; 
+  margin-left: 35px;
+}
+#product-info-container {
+  margin-top: 5px; 
+}
