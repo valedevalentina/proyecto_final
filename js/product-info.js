@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productInfo = document.getElementById('product-info-container');
+    const categoryName = document.getElementById('category-name');
 
     const id = localStorage.getItem("catID");
     const pid = localStorage.getItem("productID");
@@ -10,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             const products = data.products;
+            const category = data.catName; 
+            // Nombre de la categoría 
+            categoryName.innerHTML = `<p>Categoria: ${category}</p>`;
 
             // Buscar el producto por ID
             const product = products.find(p => p.id === productID);
