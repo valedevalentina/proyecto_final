@@ -547,6 +547,12 @@ p.soldCount {
     justify-content: center;
   }
 
+  #clearButton {
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+
   .sort-controls .icono {
     display: flex;
    
