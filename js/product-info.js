@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const products = data.products;
             const category = data.catName; 
             // Nombre de la categoría 
-            categoryName.innerHTML = `<p>Categoria: ${category}</p>`;
+            categoryName.innerHTML = `<a href="products.html">Categoria: ${category}</a>`;
 
             // Buscar el producto por ID
             const product = products.find(p => p.id === productID);
