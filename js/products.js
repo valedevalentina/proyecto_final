@@ -61,6 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             );
                             displayProducts(filteredProducts);
                         });
+
+
+                        // Botón para limpiar filtros"
+                        const clearButton = document.getElementById("clearButton");
+                            clearButton.addEventListener("click", () => {
+                         // Restablecer los campos de filtro de precio
+                              minPriceInput.value = '';
+                              maxPriceInput.value = '';
+                           // Mostrar todos los productos
+                             displayProducts(products);
+                            });
+                       
             
                         // Ordenar productos por precio ascendente
                         sortPriceAscButton.addEventListener("click", () => {
