@@ -52,6 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     thumbnail.addEventListener('click', function () {
                         document.getElementById('main-product-image').src = this.dataset.image;
                     });
+                    
+                });
+                const relatedProductsContainer = document.querySelector('.carousel-inner'); // Asegúrate de que este selector sea correcto
+
+                // Mostrar productos relacionados (de la misma categoría)
+                relatedProductsContainer.innerHTML = ''; // Limpiar el contenedor
+                
+                let firstItem = true; // Para determinar qué producto será el primero
+                products.forEach(relatedProduct => {
+                    if (relatedProduct.id !== productID) {
+                        const relatedProductHTML = `
+                            <div class="carousel-item ${firstItem ? 'active' : ''}">
+                                <div class="related-product">
+                                    <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
+                                    <h4>${relatedProduct.name}</h4>
+                                    <p>${relatedProduct.currency} ${relatedProduct.cost.toFixed(0)}</p>
+                                </div>
+                            </div>
+                        `;
+                        relatedProductsContainer.innerHTML += relatedProductHTML;
+                        firstItem = false; // Solo el primer producto se marca como activo
+                    }
                 });
             } else {
                 productInfo.innerHTML = '<p>Producto no encontrado</p>';
