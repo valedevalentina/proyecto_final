@@ -292,7 +292,7 @@ a.custom-card:hover {
 
 #product-details .btn-group {
   display: flex;
-  gap: 5px;
+  gap: 3px;
   align-items: end;
 }
 
@@ -377,4 +377,24 @@ a.custom-card:hover {
   #category-name {
     margin-left: 5%;
   }
+}
+
+/*Seccion comentario*/
+
+.comments-section {
+  margin-top: 30px;
+}
+
+.list-group-item {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.list-group-item h5 {
+  margin: 0 0 10px;
+}
+
+.list-group-item small {
+  display: block;
+  color: #777;
 }
