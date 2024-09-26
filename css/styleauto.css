@@ -313,9 +313,27 @@ a.custom-card:hover {
 }
 
 #category-name {
-  margin-top: 20px; 
-  margin-left: 6%;
+  margin-top: 5%; 
+  margin-left: 12%;
 }
+#related-products-container{
+  margin-left: 12%;
+  margin-right: 12%;
+  margin-top: 4%;
+  text-align: center;
+
+}
+
+.related-product img {
+  max-width: 100%; /* Asegúrate de que la imagen no exceda el contenedor */
+  height: auto; /* Mantén la relación de aspecto */
+  width: 100%; /* Asegura que todas las imágenes tengan el mismo tamaño */
+}
+.carousel-item {
+  padding: 10px; /* Espacio entre productos */
+}
+
+
 
 /* Media queries para el diseño responsivo */
 @media (max-width: 768px) {
@@ -377,4 +395,5 @@ a.custom-card:hover {
   #category-name {
     margin-left: 5%;
   }
+  
 }
