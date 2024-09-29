@@ -59,6 +59,47 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.getElementById('main-product-image').src = this.dataset.image;
                     });
                 });
+
+                 // Mostrar productos relacionados (de la misma categoría)
+                 const relatedProductsContainer = document.querySelector('.carousel-inner');
+                 relatedProductsContainer.innerHTML = ''; // Limpiar el contenedor
+ 
+                 let firstItem = true; // Para determinar qué producto será el primero
+                 let rowHTML = '<div class="row">'; // Inicia una nueva fila
+                 let productCount = 0; // Contador de productos
+ 
+                 products.forEach(relatedProduct => {
+                     if (relatedProduct.id !== productID) {
+                         const relatedProductHTML = `
+                             <div class="col-md-4"> <!-- Tres productos por fila -->
+                                 <div class="related-product">
+                                     <img src="${relatedProduct.image}" alt="${relatedProduct.name}" class="img-fluid">
+                                     <h4>${relatedProduct.name}</h4>
+                                     <p>${relatedProduct.currency} ${relatedProduct.cost.toFixed(0)}</p>
+                                 </div>
+                             </div>
+                         `;
+ 
+                         rowHTML += relatedProductHTML; // Agregar el producto a la fila
+                         productCount++; // Aumentar el contador de productos
+ 
+                         // Si tenemos 3 productos, cerrar la fila y reiniciar el HTML
+                         if (productCount === 3) {
+                             rowHTML += '</div>'; // Cierra la fila
+                             relatedProductsContainer.innerHTML += `<div class="carousel-item ${firstItem ? 'active' : ''}">${rowHTML}</div>`;
+                             firstItem = false; // Solo el primer producto se marca como activo
+                             rowHTML = '<div class="row">'; // Reiniciar fila
+                             productCount = 0; // Reiniciar contador
+                         }
+                     }
+                 });
+ 
+                 // Si quedan productos sin mostrar, cierra la fila
+                 if (productCount > 0) {
+                     rowHTML += '</div>'; // Cierra la fila
+                     relatedProductsContainer.innerHTML += `<div class="carousel-item">${rowHTML}</div>`;
+                 }
+
             } else {
                 productInfo.innerHTML = '<p>Producto no encontrado</p>';
             }
