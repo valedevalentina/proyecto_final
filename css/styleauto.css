@@ -213,7 +213,7 @@ a.custom-card:hover {
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
-  margin: 5% auto;
+  margin: 3% auto;
   gap: 20px;
   padding: 20px;
   background-color: #fff;
@@ -247,7 +247,7 @@ a.custom-card:hover {
 
 #thumbnail-list img {
   width: 100px;
-  height: 90px;
+  height:93px;
   object-fit: cover;
   cursor: pointer;
   border-radius: 5px;
@@ -262,7 +262,7 @@ a.custom-card:hover {
 /* Contenedor de la descripción */
 #product-details {
   flex: 1;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -274,31 +274,35 @@ a.custom-card:hover {
 
 #product-details p {
   font-size: 1.2rem;
-  margin-top: 10%;
+  margin-top: 6%;
   text-align: left;
 }
 
 #product-details .price {
   font-size: 1.8rem;
   color: rgb(0, 0, 0);
-  justify-content: end;
 }
 
 #product-details .soldCount {
   font-size: 1rem;
-  color: #777;
+  color: #383737;
   align-items: end;
+}
+
+#product-details .avgRating, span {
+  font-size: 1rem;
+  color: #777;
 }
 
 #product-details .btn-group {
   display: flex;
-  gap: 3px;
+  gap: 10px;
   align-items: end;
 }
 
 #product-details button {
   flex: 1;
-  padding: 10px;
+  padding: 8px;
   font-size: 1.2rem;
   color: white;
   background-color: #ee8523;
@@ -308,8 +312,23 @@ a.custom-card:hover {
   transition: background-color 0.3s;
 }
 
+button#btnCalificar {
+  display: flexbox;
+  background-color: #777;
+  margin-left: 13%;
+  font-size: 1rem;
+  width: 30%;
+  height: 18%;
+  padding: 2px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
 #product-details button:hover {
-  background-color: #ee8523;
+  background-color: rgb(90, 89, 88)
 }
 
 #category-name {
@@ -407,6 +426,8 @@ a.custom-card:hover {
 .list-group-item {
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .list-group-item h5 {
@@ -416,4 +437,19 @@ a.custom-card:hover {
 .list-group-item small {
   display: block;
   color: #777;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star.selected {
+  color: #f5c518;
+}
+
+#star-rating {
+  display: flex;
+  gap: 5px;
 }

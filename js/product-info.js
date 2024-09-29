@@ -43,12 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h2>${product.name}</h2>
                         <p>${product.description}</p>
                         <p class="price">${product.currency} ${product.cost.toFixed(0)}</p>
-                        <p class="soldCount">Cantidad de vendidos: ${product.soldCount}</p>
+                        <p class="soldCount">Cantidad de vendidos: ${product.soldCount}
+                         <!-- Botón para abrir el modal de calificación -->
+                            <button id="btnCalificar" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ratingModal">Calificar</button></p>
                         <div class="btn-group">
                             <button class="btn btn-primary">Comprar ahora</button>
                             <button class="btn btn-secondary">Agregar al carrito</button>
-                            <!-- Botón para abrir el modal de calificación -->
-                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ratingModal">Calificar</button>
+                           
                         </div>
                     </div>
                 `;
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
     
             // Añadir el nuevo comentario a la lista de comentarios
-            commentContainer.insertAdjacentHTML('beforeend', newCommentHTML);
+            commentContainer.insertAdjacentHTML('afterbegin', newCommentHTML);
             
             // Limpiar el formulario después de enviarlo
             commentForm.reset();
