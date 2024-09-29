@@ -130,7 +130,7 @@ fetch(url_comment)
                     <div class="star-rating">
                         ${getStarsHTML(comment.score)} <!-- Mostrar estrellas según la puntuación del comentario -->
                     </div>
-                    <small class="text-muted">Puntuación: ${comment.score}/5 - ${date.toLocaleString()}</small>
+                    <small class="text-muted">${date.toLocaleString()}</small>
                 </div>
             `;
             totalScore += comment.score; // Sumar la puntuación de cada comentario
@@ -187,7 +187,7 @@ fetch(url_comment)
                 <div class="star-rating">
                     ${getStarsHTML(userRating)}
                 </div>
-                <small class="text-muted">Puntuación: ${userRating}/5 - ${new Date().toLocaleString()}</small>
+                <small class="text-muted">${new Date().toLocaleString()}</small>
             </div>
         `;
 
