@@ -5,12 +5,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <!--<link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styleauto.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,22 +45,92 @@
   <div id="product-info-container" class="product-info">
     <!-- información de productos -->
   </div>
-    <!-- Contenedor de Productos Relacionados (Carrusel) -->
-    <div id="related-products-container" class="related-products">
-      <h3>Productos relacionados</h3>
-      <div id="related-products" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner"></div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#related-products" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#related-products" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Siguiente</span>
-          </button>
+<!-- Contenedor de Productos Relacionados (Carrusel) -->
+<div id="related-products-container" class="related-products">
+  <h3>Productos relacionados</h3>
+  <div id="related-products" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+          <!-- Los productos se insertarán aquí -->
+        </div>
       </div>
+      <!-- Añadir más items aquí -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#related-products" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#related-products" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
   </div>
+</div>
   
+
+<!-- Modal para agregar comentario y calificación -->
+<div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ratingModalLabel">Calificar producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="comment-form">
+          <div class="form-group">
+            <label for="user-comment">Escribe tu comentario:</label>
+            <textarea class="form-control" id="user-comment" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="user-rating">Calificación:</label>
+            <div id="star-rating">
+                <!-- Las estrellas para la calificación -->
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contenedor para los comentarios -->
+<div id="comment-container" class="comments-section container my-5">
+  <h3>Comentarios</h3>
+  <div id="comment-list" class="list-group">
+    <!-- Aquí se insertarán los comentarios -->
+  </div>
+</div>
+
+<!-- Contenedor de Productos Relacionados (Carrusel) -->
+<div id="related-products-container" class="related-products">
+  <h3>Productos relacionados</h3>
+  <div id="related-products" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+          <!-- Los productos se insertarán aquí -->
+        </div>
+      </div>
+      <!-- Añadir más items aquí -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#related-products" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#related-products" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+</div>
 
   <footer class="text-muted">
     <div class="container">
@@ -78,12 +148,14 @@
       <div></div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="js/product-info.js"></script>
   <script src="js/init.js"></script>
   <script src="js/index.js"></script>
-  <script src="js/product-info.js"></script>
 </body>
 
 </html>
