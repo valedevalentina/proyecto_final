@@ -41,5 +41,11 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
+    function cerrarSesion() {
+        localStorage.removeItem('sesionIniciada');
+        localStorage.removeItem('userEmail');
+        location.replace("login.html");
+    }
+
 });
 
