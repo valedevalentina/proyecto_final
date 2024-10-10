@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
         cerrarSesion();
     });
     
-    document.getElementById("autos").addEventListener("click", function() {
+   document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"
     });
@@ -40,11 +40,6 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-    function cerrarSesion() {
-        localStorage.removeItem('sesionIniciada');
-        localStorage.removeItem('userEmail');
-        location.replace("login.html");
-    }
-    
+
 });
 
