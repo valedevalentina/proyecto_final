@@ -22,6 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const url_comment = `https://japceibal.github.io/emercado-api/products_comments/${pid}.json`;
     const productID = parseInt(localStorage.getItem("productID"), 10);
 
+    const sesionIniciada = localStorage.getItem('sesionIniciada');
+    const userEmail = localStorage.getItem('userEmail')
+    const botonUsuario = document.getElementById('boton-usuario');
+
+if (sesionIniciada && userEmail) {
+    // Cambiar texto del botón al email del usuario
+    botonUsuario.textContent = userEmail;
+
+    // Evitar que el botón de usuario cierre sesión directamente
+    botonUsuario.addEventListener("click", function(event) {
+        event.preventDefault(); // Evitar la acción por defecto
+        const dropdownMenu = document.querySelector('.dropdown-menu'); // Seleccionar el menú desplegable
+        dropdownMenu.classList.toggle('show'); // Alternar la visibilidad del menú
+    });
+} 
+
     fetch(url)
         .then(response => response.json())
         .then(data => {
