@@ -561,6 +561,17 @@ p.soldCount {
     margin-left: 5%;
     margin-right: 5%;
   }
+  .navbar .dropdown-menu {
+    background-color: #343a40; /* Color de fondo del menú desplegable */
+  }
+  
+  .navbar .dropdown-item {
+    color: #fff; /* Color del texto */
+  }
+  
+  .navbar .dropdown-item:hover {
+    background-color: #495057; /* Color de fondo al pasar el ratón */
+  }
 }
 
 /* termina el estilo de products.html */
