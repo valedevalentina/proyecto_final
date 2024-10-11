@@ -1,114 +1,103 @@
-const sesionIniciada = localStorage.getItem('sesionIniciada');
-    const userEmail = localStorage.getItem('userEmail')
+document.addEventListener("DOMContentLoaded", function() {
+    const botonGuardar = document.querySelector(".save-button");
     const botonUsuario = document.getElementById('boton-usuario');
+    const userEmail = localStorage.getItem('userEmail');
+    const emailField = document.getElementById("email");
+    const fotoPerfilInput = document.getElementById("fotoPerfil");
+    const profilePictureButton = document.querySelector("label[for='fotoPerfil']");
+    const previewImagen = document.getElementById("previewImagen");
+    const botonCerrarSesion = document.getElementById("cerrar-sesion"); // Agrega esta línea
 
-if (sesionIniciada && userEmail) {
-    // Cambiar texto del botón al email del usuario
-    botonUsuario.textContent = userEmail;
-
-    // Evitar que el botón de usuario cierre sesión directamente
-    botonUsuario.addEventListener("click", function(event) {
-        event.preventDefault(); // Evitar la acción por defecto
-        const dropdownMenu = document.querySelector('.dropdown-menu'); // Seleccionar el menú desplegable
-        dropdownMenu.classList.toggle('show'); // Alternar la visibilidad del menú
-    });
-    const nombre = document.getElementById('nombre');
-const segundoNombre = document.getElementById('segundoNombre');
-const apellido = document.getElementById('apellido');
-const segundoApellido = document.getElementById('segundoApellido');
-const email = document.getElementById('email');
-const telefono = document.getElementById('telefono');
-const fotoPerfil = document.getElementById('fotoPerfil');
-const previewImagen = document.getElementById('previewImagen');
-const saveButton = document.querySelector('.save-button');
-
-// Cargar datos del Local Storage al cargar la página
-window.onload = () => {
-    const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario')) || {};
-
-    nombre.value = datosUsuario.nombre || '';
-    segundoNombre.value = datosUsuario.segundoNombre || '';
-    apellido.value = datosUsuario.apellido || '';
-    segundoApellido.value = datosUsuario.segundoApellido || '';
-    email.value = datosUsuario.email || '';
-    telefono.value = datosUsuario.telefono || '';
-
-    if (datosUsuario.fotoPerfil) {
-        previewImagen.src = datosUsuario.fotoPerfil;
+    // Actualizar el nombre de usuario en el botón del perfil
+    if (userEmail) {
+        botonUsuario.textContent = userEmail;
+        emailField.value = userEmail;
     }
-};
 
-// Función para validar campos obligatorios
-function validarCampos() {
-    if (nombre.value.trim() === '' || apellido.value.trim() === '' || email.value.trim() === '') {
-        alert('Revise campos sin contestar');
-        return false;
+    // Cargar datos guardados en localStorage al abrir el perfil
+    const nombre = localStorage.getItem("nombre");
+    const segundoNombre = localStorage.getItem("segundoNombre");
+    const apellido = localStorage.getItem("apellido");
+    const segundoApellido = localStorage.getItem("segundoApellido");
+    const telefono = localStorage.getItem("telefono");
+    const fotoPerfilGuardada = localStorage.getItem("fotoPerfil");
+
+    // Asignar valores a los campos
+    if (nombre) document.getElementById("nombre").value = nombre;
+    if (segundoNombre) document.getElementById("segundoNombre").value = segundoNombre;
+    if (apellido) document.getElementById("apellido").value = apellido;
+    if (segundoApellido) document.getElementById("segundoApellido").value = segundoApellido;
+    if (telefono) document.getElementById("telefono").value = telefono;
+    if (fotoPerfilGuardada) {
+        previewImagen.src = fotoPerfilGuardada; // Actualizar la vista previa
+        
     }
-    return true;
-}
 
-// Evento para guardar datos en el Local Storage si la validación es exitosa
-saveButton.addEventListener('click', (event) => {
-    event.preventDefault(); // Evitar que el formulario realice un envío involuntario
+    // Función para guardar los datos del perfil
+    botonGuardar.addEventListener("click", function() {
+        const nombre = document.getElementById("nombre").value.trim();
+        const apellido = document.getElementById("apellido").value.trim();
+        const email = document.getElementById("email").value.trim();
 
-    console.log("Botón Guardar presionado."); // Mensaje de depuración
-
-    if (validarCampos()) { // Validar antes de continuar
-        console.log("Validación exitosa, guardando datos."); // Mensaje de depuración
-
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const datosUsuario = {
-                nombre: nombre.value,
-                segundoNombre: segundoNombre.value,
-                apellido: apellido.value,
-                segundoApellido: segundoApellido.value,
-                email: email.value,
-                telefono: telefono.value,
-                fotoPerfil: e.target.result
-            };
-
-            localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
-            alert('Datos guardados correctamente');
-        };
-
-        if (fotoPerfil.files[0]) {
-            reader.readAsDataURL(fotoPerfil.files[0]);
-        } else {
-            const datosUsuario = {
-                nombre: nombre.value,
-                segundoNombre: segundoNombre.value,
-                apellido: apellido.value,
-                segundoApellido: segundoApellido.value,
-                email: email.value,
-                telefono: telefono.value,
-                fotoPerfil: previewImagen.src
-            };
-
-            localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
-            alert('Datos guardados correctamente');
+        // Validación de campos obligatorios
+        if (!nombre || !apellido || !email) {
+            alert("Revise campos sin contestar");
+            return;
         }
-    } else {
-        console.log("Validación fallida. Datos no guardados."); // Mensaje de depuración
-    }
+
+        const segundoNombre = document.getElementById("segundoNombre").value.trim();
+        const segundoApellido = document.getElementById("segundoApellido").value.trim();
+        const telefono = document.getElementById("telefono").value.trim();
+        const fotoPerfil = fotoPerfilInput.files[0];
+
+        // Guardar datos en localStorage
+        localStorage.setItem("nombre", nombre);
+        localStorage.setItem("segundoNombre", segundoNombre);
+        localStorage.setItem("apellido", apellido);
+        localStorage.setItem("segundoApellido", segundoApellido);
+        localStorage.setItem("email", email);
+        localStorage.setItem("telefono", telefono);
+
+        // Guardar foto de perfil
+        if (fotoPerfil) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                localStorage.setItem("fotoPerfil", event.target.result);
+                previewImagen.src = event.target.result; // Actualizar la vista previa de la imagen
+            };
+            reader.readAsDataURL(fotoPerfil);
+        }
+
+        alert("Datos guardados correctamente");
+    });
+
+    // Evento para cambiar el texto del botón y actualizar la vista previa de la imagen
+    fotoPerfilInput.addEventListener("change", function() {
+        const fotoPerfil = fotoPerfilInput.files[0];
+
+        if (fotoPerfil) {
+            
+            // Actualizar la vista previa de la imagen y guardar en localStorage
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                localStorage.setItem("fotoPerfil", event.target.result);
+                previewImagen.src = event.target.result; // Mostrar la nueva imagen seleccionada
+            };
+            reader.readAsDataURL(fotoPerfil);
+        }
+    });
+
+      // Se borren los datos
+      botonCerrarSesion.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+        localStorage.removeItem("nombre");
+        localStorage.removeItem("segundoNombre");
+        localStorage.removeItem("apellido");
+        localStorage.removeItem("segundoApellido");
+        localStorage.removeItem("telefono");
+        localStorage.removeItem("fotoPerfil"); 
+        localStorage.removeItem("userEmail");
+              
+        window.location.href = "login.html"; 
+    });
 });
-
-
-// Vista previa de la imagen seleccionada
-fotoPerfil.addEventListener('change', () => {
-    const file = fotoPerfil.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            previewImagen.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-botonCerrarSesion.addEventListener('click', () => {
-    localStorage.removeItem('datosUsuario'); // Eliminar solo datos del perfil
-    localStorage.removeItem('sesionIniciada'); // Si es necesario, también eliminar la sesión
-    // Redirigir a la página de inicio de sesión o refrescar la página
-    window.location.href = 'login.html'; // Redirige a la página de inicio de sesión
-}); 

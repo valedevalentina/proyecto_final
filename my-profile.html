@@ -56,7 +56,8 @@
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
     <li><a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a></li>
     <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
-    <li><a class="dropdown-item" href="login.html" data-action="cerrar-sesion">Cerrar sesión</a></li>
+    <li><a class="dropdown-item" href="login.html" id="cerrar-sesion" data-action="cerrar-sesion">Cerrar sesión</a></li>
+
 </ul>
 </li>
         </ul>
@@ -96,6 +97,7 @@
           <input type="file" id="fotoPerfil" accept="image/*">
           <img id="previewImagen" src="https://via.placeholder.com/100" alt="Foto de perfil">
       </div>
+      
         
         <button class="save-button">Guardar cambios</button>
     </div>
