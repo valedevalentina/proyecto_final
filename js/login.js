@@ -1,5 +1,3 @@
-// Código JavaScript para iniciar sesión:
-
 const ingresar = document.getElementById("ingresar");
 
 ingresar.addEventListener("click", function() {
