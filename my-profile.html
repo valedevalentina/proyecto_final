@@ -5,7 +5,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-  <!--<link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->  
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
@@ -29,10 +28,9 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
-         <!-- Botón de alternancia para Modo Día/Noche -->
-    <button id="mode-toggle" class="btn btn-outline-light me-2">
-      🌓 Modo Noche
-    </button>
+      <button id="mode-toggle" class="btn btn-outline-light me-2">
+        🌓 Modo Noche
+      </button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,61 +46,62 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-        </li>
-        <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="boton-usuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    NombreUsuario
-</a>
-<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
-    <li><a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a></li>
-    <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
-    <li><a class="dropdown-item" href="login.html" id="cerrar-sesion" data-action="cerrar-sesion">Cerrar sesión</a></li>
-
-</ul>
-</li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="boton-usuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              NombreUsuario
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
+              <li><a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="login.html" data-action="cerrar-sesion">Cerrar sesión</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <main>
     <div class="container">
       <div class="profile-container">
-        <h2>Perfil de Usuario</h2>
-        <div class="profile-field">
-            <label for="nombre">Nombre*</label>
-            <input type="text" id="nombre" required>
+        <div class="profile-title"> <!-- Contenedor para el título -->
+          <h2>Perfil de Usuario</h2>
         </div>
         <div class="profile-field">
-            <label for="segundoNombre">Segundo nombre</label>
-            <input type="text" id="segundoNombre">
+          <label for="nombre">Nombre*</label>
+          <input type="text" id="nombre" required>
         </div>
         <div class="profile-field">
-            <label for="apellido">Apellido*</label>
-            <input type="text" id="apellido" required>
+          <label for="segundoNombre">Segundo nombre</label>
+          <input type="text" id="segundoNombre">
         </div>
         <div class="profile-field">
-            <label for="segundoApellido">Segundo apellido</label>
-            <input type="text" id="segundoApellido">
+          <label for="apellido">Apellido*</label>
+          <input type="text" id="apellido" required>
         </div>
         <div class="profile-field">
-            <label for="email">E-mail*</label>
-            <input type="email" id="email" required>
+          <label for="segundoApellido">Segundo apellido</label>
+          <input type="text" id="segundoApellido">
         </div>
         <div class="profile-field">
-            <label for="telefono">Teléfono de contacto</label>
-            <input type="tel" id="telefono">
+          <label for="email">E-mail*</label>
+          <input type="email" id="email" required>
         </div>
         <div class="profile-field">
-          <label for="fotoPerfil">Foto de perfil</label>
-          <input type="file" id="fotoPerfil" accept="image/*">
-          <img id="previewImagen" src="https://via.placeholder.com/100" alt="Foto de perfil">
+          <label for="telefono">Teléfono de contacto</label>
+          <input type="tel" id="telefono">
+        </div>
+        <div class="profile-picture text-center">
+          <img src="https://via.placeholder.com/100" alt="Foto de perfil" class="img-fluid">
+          <label class="upload-text d-block mt-2">Subir foto</label>
+        </div>
+        <div class="text-end"> <!-- Alineación a la derecha -->
+          <button class="btn btn-warning btn-sm save-button">Guardar cambios</button>
+        </div>
       </div>
-      
-        
-        <button class="save-button">Guardar cambios</button>
-    </div>
     </div>
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -111,6 +110,7 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
