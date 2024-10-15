@@ -488,10 +488,10 @@ body {
 
 /* Modo Noche (con la clase dark-mode en el body) */
 body.dark-mode {
-  background-image: none; /* Puedes eliminar la imagen de fondo o cambiarla */
-  background-color: #121212; /* Fondo oscuro */
+  background-image: url(../img/Desktop-1dark-mode.png);
   color: #e0e0e0; /* Color de texto claro */
 }
+
 
 /* Cambios en la jumbotron para el Modo Noche */
 body.dark-mode .jumbotron {
@@ -538,4 +538,22 @@ body.dark-mode .star {
 
 body.dark-mode .star.selected {
   color: #f5c518; /* Las estrellas seleccionadas permanecen con color de selección */
+}
+
+.dark-mode #product-details .soldCount {
+  font-size: 1rem;
+  color: #ffffff;
+  align-items: end;
+}
+body.dark-mode #product-details .soldCount {
+  background-color: #2c2c2c; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
+}
+body.dark-mode #product-details .price {
+  background-color: #2c2c2c; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
+}
+body.dark-mode #average-score {
+  background-color: #2c2c2c; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
 }
