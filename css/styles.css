@@ -678,6 +678,11 @@ p.soldCount {
   cursor: pointer;
 }
 /* dark-mode */
+
+.dark-mode body {
+  background-image: url(../img/Desktop-1-dark-mode.png);
+}
+
 .dark-mode .profile-container {
   background-color: #2d2626; 
   color: white; 
