@@ -557,3 +557,11 @@ body.dark-mode #average-score {
   background-color: #2c2c2c; /* Fondo oscuro */
   color: #e0e0e0; /* Texto claro */
 }
+
+.dark-mode .modal-title {
+  color: #000000; 
+}
+
+.dark-mode #comment-form label {
+  color: #000000; 
+}
