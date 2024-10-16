@@ -589,29 +589,17 @@ p.soldCount {
   margin: 50px auto; 
   position: relative; /* Necesario para el posicionamiento absoluto de la imagen */
 }
-.d-flex {
-  position: relative;
-}
 
 .img-perfil {
-  width: 120px; 
-  height: 120px;
-  border-radius: 50%;
-  position: absolute;
-  background-color: white; 
-  margin-right: -400px;
-  margin-top: 8px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 .upload-text {
-  margin-top: 80px; 
-  z-index: 2; 
+  font-size: 14px;
   color: #ff9900; 
-  font-weight: bold;
   cursor: pointer;
-  font-weight: 700; 
-  font-size: 14px; 
-  margin-top: 130px;
-  margin-right: -400px;
+  margin-top: 5px;
 }
 
 /* Estilo para los campos */
@@ -621,6 +609,7 @@ p.soldCount {
   font-size: 24px; 
   font-weight: bold; 
 }
+
 
 .profile-field {
   margin-bottom: 15px;
@@ -646,14 +635,11 @@ p.soldCount {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  text-align: right;
-  margin-top: 5px; 
-  align-self: flex-end; 
+  margin-top: 5px;
 }
 
 .save-button:hover {
   background-color: #e68a00;
-  color: white;
 }
 
 /* Estilo para la imagen de perfil */
@@ -668,6 +654,7 @@ p.soldCount {
   border: 4px solid #3b2b2b; /* Borde marrón para integrar la imagen al contenedor */
 }
 
+
 .profile-picture img {
   border-radius: 50%; 
   width: 100%;
@@ -675,28 +662,32 @@ p.soldCount {
   object-fit: cover;
 }
 
+
 .profile-picture label {
-  display: block;
   margin-top: 10px;
   color: #ff9900;
   cursor: pointer;
 }
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 /* dark-mode */
 .dark-mode .profile-container {
   background-color: #2d2626; 
-  color: white; 
 }
 
 .dark-mode .profile-field input {
   border: 1px solid #666; /* Borde gris más oscuro para el input */
   background-color: #444; /* Fondo de los inputs en modo oscuro */
-}
-
-.dark-mode .save-button {
-  background-color: #ff9900; 
-}
-.dark-mode .save-button:hover {
-  background-color: #e68a00; 
 }
 
 body.dark-mode {
