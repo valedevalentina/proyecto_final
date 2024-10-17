@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const previewImagen = document.getElementById("previewImagen");
     const botonCerrarSesion = document.getElementById("cerrar-sesion"); // Agrega esta línea
 
-    // Actualizar el nombre de usuario en el botón del perfil
+    // Actualizar el email del usuario en el botón del perfil
     if (userEmail) {
         botonUsuario.textContent = userEmail;
         emailField.value = userEmail;
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("segundoNombre", segundoNombre);
         localStorage.setItem("apellido", apellido);
         localStorage.setItem("segundoApellido", segundoApellido);
-        localStorage.setItem("email", email);
+        //localStorage.setItem("email", email);
         localStorage.setItem("telefono", telefono);
 
         // Guardar foto de perfil
