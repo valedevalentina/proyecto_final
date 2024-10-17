@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("segundoNombre", segundoNombre);
         localStorage.setItem("apellido", apellido);
         localStorage.setItem("segundoApellido", segundoApellido);
-        localStorage.setItem("email", email);
+        //localStorage.setItem("email", email);
         localStorage.setItem("telefono", telefono);
 
         // Guardar foto de perfil
