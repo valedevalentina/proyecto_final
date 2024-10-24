@@ -13,3 +13,4 @@ if (sesionIniciada && userEmail) {
         dropdownMenu.classList.toggle('show'); // Alternar la visibilidad del menú
     });
 } 
+
