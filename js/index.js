@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const sesionIniciada = localStorage.getItem('sesionIniciada');
     const userEmail = localStorage.getItem('userEmail')
     const botonUsuario = document.getElementById('boton-usuario');
+  
 
     if (!sesionIniciada) {
         // Si no hay sesión iniciada, redirigir al login
@@ -13,15 +14,21 @@ document.addEventListener("DOMContentLoaded", function(){
     if (sesionIniciada && userEmail) {
         // Cambiar texto del botón al email del usuario
         botonUsuario.textContent = userEmail;
-        // Cambiar funcionalidad del botón para cerrar sesión
-        botonUsuario.addEventListener("click", function() {
-            localStorage.removeItem('sesionIniciada');
-            localStorage.removeItem('userEmail');
-            location.replace("login.html"); // Redirigir al login al cerrar sesión
+    
+        // Evitar que el botón de usuario cierre sesión directamente
+        botonUsuario.addEventListener("click", function(event) {
+            event.preventDefault(); // Evitar la acción por defecto
+            const dropdownMenu = document.querySelector('.dropdown-menu'); // Seleccionar el menú desplegable
+            dropdownMenu.classList.toggle('show'); // Alternar la visibilidad del menú
         });
     } 
+
+    // Asignar el evento de cerrar sesión solo a la opción del menú
+    document.querySelector('.dropdown-item[data-action="cerrar-sesion"]').addEventListener("click", function() {
+        cerrarSesion();
+    });
     
-    document.getElementById("autos").addEventListener("click", function() {
+   document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"
     });
@@ -33,5 +40,12 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    function cerrarSesion() {
+        localStorage.removeItem('sesionIniciada');
+        localStorage.removeItem('userEmail');
+        location.replace("login.html");
+    }
+
 });
 

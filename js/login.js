@@ -1,5 +1,3 @@
-// Código JavaScript para iniciar sesión:
-
 const ingresar = document.getElementById("ingresar");
 
 ingresar.addEventListener("click", function() {
@@ -11,6 +9,21 @@ ingresar.addEventListener("click", function() {
     // Validar si los campos están vacíos
     if (user === '' || psw === '') {
         valid = false;
+    }
+
+    // Validar si la contraseña tiene menos de 5 caracteres
+    if (psw.length < 5) {
+        valid = false;
+        alertDanger.textContent = 'La contraseña debe tener al menos 5 caracteres.';
+        }
+
+    // Expresión regular para validar el formato de email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validar si el email no es válido
+    if (!emailPattern.test(user)) {
+    valid = false;
+    alertDanger.textContent = 'Por favor, ingresa un correo electrónico válido.';
     }
 
     if (valid) {
