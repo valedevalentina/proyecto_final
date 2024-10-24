@@ -72,11 +72,17 @@ if (sesionIniciada && userEmail) {
                         <button id="btnCalificar" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ratingModal">Calificar</button>
                         </p>
                         <div class="btn-group">
-                            <button class="btn btn-primary">Comprar ahora</button>
-                            <button class="btn btn-secondary">Agregar al carrito</button>
+                            <button class="btn btn-primary" id="buyButton">Agregar al carrito</button>
                         </div>
                     </div>
                 `;
+
+                // Agregar evento al botón "Comprar ahora"
+                const buyButton = document.getElementById('buyButton');
+                buyButton.addEventListener('click', () => {
+                    const buyModal = new bootstrap.Modal(document.getElementById('buyModal'));
+                    buyModal.show(); // Mostrar el modal
+                });
 
                 document.querySelectorAll('.thumbnail').forEach(thumbnail => {
                     thumbnail.addEventListener('click', function () {
