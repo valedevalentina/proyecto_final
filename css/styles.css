@@ -692,11 +692,11 @@ p.soldCount {
 }
 
 .card {
-  background-color: #3b2b2b !important; 
+  background-color: #292828 !important; 
   color: #fff;
   padding: 20px;
   border-radius: 10px;
-  width: 400px;
+  width: 80%;
 }
 
 h2 {
@@ -730,22 +730,25 @@ h2 {
 }
 
 .cart-item img {
-  max-width: 100px;
+  width: 20%;
   border-radius: 8px;
 }
 
 .cart-item-info {
   flex-grow: 1;
-  margin-left: 10px;
+  margin-left: 2px;
+  text-align: left;
 }
 
 .cart-item-info h5 {
   font-size: 18px;
   margin: 0;
+  text-align: left;
 }
 
 .cart-item-info p {
   margin: 5px 0;
+  text-align: left;
 }
 
 .quantity-selector {
