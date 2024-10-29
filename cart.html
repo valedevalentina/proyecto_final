@@ -9,6 +9,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/dark-mode.css" rel="stylesheet" >
+
 </head>
 
 <body>
@@ -48,15 +50,16 @@
  
   <main class="cart-container">
     <div class="card p-3 bg-dark text-white">
-        <h2>Carrito</h2>
+        <h2>Productos del carrito</h2>
         <div id="empty-message" class="empty-message">Tu carrito está vacío. ¡Agrega productos para comenzar!</div>
-        <div id="cart-items" class="cart-items"></div> <!-- Aquí se mostrarán los productos del carrito -->
+        <div id="cart-items" class="cart-items"></div> <!-- Productos aquí -->
         <h4 id="total-price" class="mt-3"></h4>
         <div class="buy-btn-container">
             <button class="btn btn-warning" id="buy-btn" disabled>Comprar</button>
         </div>
     </div>
 </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -77,6 +80,8 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/dark-mode.js"></script>
+
 </body>
 
 </html>
