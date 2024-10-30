@@ -76,15 +76,15 @@ function renderCart() {
                 <img src="${product.image}" alt="${product.name}">
                 <div>
                     <h5>${product.name}</h5>
-                    <p>${product.currency} ${product.cost.toFixed(2)}</p>
+                    <p>${product.currency} ${product.cost.toFixed(0)}</p>
                     <div class="d-flex align-items-center">
-                        <button class="btn btn-sm btn-outline-secondary me-2" onclick="decreaseQuantity(${product.id})">-</button>
+                        <button class="btn btn-sm btn-outline-secondary me-2" id="btnEliminar" onclick="decreaseQuantity(${product.id})">-</button>
                         <span>${product.quantity}</span>
                         <button class="btn btn-sm btn-outline-secondary ms-2" onclick="increaseQuantity(${product.id})">+</button>
                     </div>
                 </div>
-                <div>
-                    <h6>Subtotal: UYU ${subtotal.toFixed(2)}</h6>
+                <div class="subtotal">
+                    <h6>Subtotal: UYU ${subtotal.toFixed(0)}</h6>
                     <button class="btn btn-sm btn-danger" onclick="removeProduct(${product.id})">Eliminar</button>
                 </div>
             </div>
@@ -92,7 +92,7 @@ function renderCart() {
     });
 
     const total = calculateTotal(cartItems);
-    totalPriceElement.textContent = `Total: UYU ${total.toFixed(2)}`;
+    totalPriceElement.textContent = `Total: UYU ${total.toFixed(0)}`;
     cartContainer.innerHTML = cartHTML;
 }
 

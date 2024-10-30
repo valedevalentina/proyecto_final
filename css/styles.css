@@ -337,6 +337,7 @@ a.custom-card:hover {
 
   ::placeholder {
     font-size: 0.8rem;
+    text-indent: 0.3cm;
   }
 
   .toggle-password i {
@@ -371,6 +372,7 @@ a.custom-card:hover {
   }
   ::placeholder {
     font-size: 15px;
+    text-indent: 0.3cm;
   }
   .toggle-password {
   right: 9%;
@@ -689,19 +691,25 @@ p.soldCount {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .cart {
-  background-color: #3b2b2b !important; 
-  color: #fff;
+  background-color: #212529 !important; 
   padding: 20px;
   border-radius: 10px;
   width: 400px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 /* Estilos para los elementos vacíos del carrito */
@@ -713,10 +721,12 @@ h2 {
 }
 
 /* Estilos de los items del carrito */
+
 .cart-items {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%; /* Ajusta el ancho según sea necesario */
 }
 
 .cart-item {
@@ -730,8 +740,30 @@ h2 {
 }
 
 .cart-item img {
-  max-width: 100px;
+  width: 100px; 
   border-radius: 8px;
+  object-fit: contain; 
+  max-width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto; /* Mantiene la relación de aspecto */
+  object-fit: cover; /* Cubre el área disponible sin deformar la imagen */
+  margin-right: 15px; /* Espacio entre la imagen y el texto */
+}
+
+.img-container {
+  width: 100px; 
+  height: 100px; 
+  overflow: hidden; 
+  border-radius: 8px;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.cart-item div {
+  flex: 1; /* Permite que el div del producto use el espacio disponible */
 }
 
 .cart-item-info {
@@ -748,10 +780,23 @@ h2 {
   margin: 5px 0;
 }
 
+.cart-item p, .cart-item h6 {
+  margin: 0; /* Elimina el margen por defecto */
+}
+
+.cart-item h6 {
+  text-align: right; /* Alinea el texto a la izquierda */
+}
+
 .quantity-selector {
   display: flex;
   align-items: center;
 }
+
+.subtotal .btn {
+  position: relative;
+  float: right;
+ }
 
 .quantity-selector button {
   background-color: #fff;
