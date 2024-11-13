@@ -100,3 +100,54 @@ function renderCart() {
 document.addEventListener('DOMContentLoaded', () => {
     renderCart();
 });
+
+
+// desde acá lo que hace es ocultar el boton de comprar si no hay elementos en el carrito
+function renderCart() {
+    const cartItems = getCartItems();
+    const cartContainer = document.getElementById('cart-items');
+    const emptyMessage = document.getElementById('empty-message');
+    const totalPriceElement = document.getElementById('total-price');
+    const buyButton = document.getElementById('buy-btn');
+
+    if (cartItems.length === 0) {
+        emptyMessage.style.display = 'block';      // Mostrar mensaje de carrito vacío
+        cartContainer.innerHTML = '';              // Limpiar el contenido del carrito
+        totalPriceElement.textContent = '';        // Limpiar el precio total
+        buyButton.style.display = 'none';          // Ocultar el botón "Comprar"
+        buyButton.disabled = true;                 // Deshabilitar el botón "Comprar" por seguridad
+        return;
+    }
+
+    emptyMessage.style.display = 'none';           // Ocultar mensaje de carrito vacío
+    buyButton.style.display = 'inline-block';      // Mostrar el botón "Comprar"
+    buyButton.disabled = false;                    // Habilitar el botón "Comprar"
+
+    let cartHTML = '';
+    cartItems.forEach(product => {
+        const subtotal = calculateSubtotal(product);
+        cartHTML += `
+            <div class="cart-item d-flex pb-2 mb-2">
+                <img src="${product.image}" alt="${product.name}">
+                <div>
+                    <h5>${product.name}</h5>
+                    <p>${product.currency} ${product.cost.toFixed(0)}</p>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary me-2" onclick="decreaseQuantity(${product.id})">-</button>
+                        <span>${product.quantity}</span>
+                        <button class="btn btn-sm btn-outline-secondary ms-2" onclick="increaseQuantity(${product.id})">+</button>
+                    </div>
+                </div>
+                <div class="subtotal">
+                    <h6>Subtotal: UYU ${subtotal.toFixed(0)}</h6>
+                    <button class="btn btn-sm btn-danger" onclick="removeProduct(${product.id})">Eliminar</button>
+                </div>
+            </div>
+        `;
+    });
+
+    const total = calculateTotal(cartItems);
+    totalPriceElement.textContent = `Total: UYU ${total.toFixed(0)}`;
+    cartContainer.innerHTML = cartHTML;
+}
+// hasta acá.

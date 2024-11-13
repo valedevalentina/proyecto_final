@@ -51,7 +51,10 @@
   <main class="cart-container">
     <div class="cart p-3 bg-dark text-white">
         <h2>Productos del carrito</h2>
-        <div id="empty-message" class="empty-message">Tu carrito está vacío. ¡Agrega productos para comenzar!</div>
+        <div id="empty-message" class="empty-message">
+          <p>Tu carrito está vacío. ¡Agrega productos para comenzar!</p>
+          <button onclick="window.location.href='categories.html'" class="btn btn-primary mt-2">Comienza a comprar</button>
+        </div>
         <div id="cart-items" class="cart-items">
           <!-- Productos aquí -->
         </div> 

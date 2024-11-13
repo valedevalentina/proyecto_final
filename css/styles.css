@@ -845,3 +845,14 @@ h2 {
   background-color: #cf7423;
 }
 
+/* boton de 'agregar productos al carrito' cuando está vacío*/
+
+.btn-primary {
+  background-color: orange !important; /* Cambia el color de fondo a naranja */
+  color: white !important;            /* Cambia el color del texto a blanco */
+  border: none !important;            /* Elimina el borde */
+}
+
+.btn-primary:hover {
+  background-color: darkorange !important; /* Cambia el color al pasar el ratón */
+}
