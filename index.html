@@ -30,7 +30,10 @@
             <a class="nav-link dropdown-toggle" href="#" id="boton-usuario" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">NombreUsuario</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li>
+                <a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a>
+                <span id="cart-badge" class="cart-badge">(0)</span>
+              </li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a id="cerrar-sesion" class="dropdown-item" href="login.html">Cerrar sesión</a></li>
             </ul>
@@ -90,6 +93,7 @@
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
   <script src="js/dark-mode.js"></script>

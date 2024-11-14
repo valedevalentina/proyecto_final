@@ -43,7 +43,10 @@
       NombreUsuario
   </a>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
-      <li><a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a></li>
+    <li>
+      <a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a>
+      <span id="cart-badge" class="cart-badge">(0)</span>
+    </li>
       <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
       <li><a class="dropdown-item" href="login.html" data-action="cerrar-sesion">Cerrar sesión</a></li>
   </ul>
@@ -164,6 +167,7 @@
   <script src="js/product-info.js"></script>
   <script src="js/init.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/dark-mode.js"></script>
 
 </body>

@@ -856,3 +856,17 @@ h2 {
 .btn-primary:hover {
   background-color: darkorange !important; /* Cambia el color al pasar el ratón */
 }
+
+/*Cart-Badge*/
+
+.cart-badge {
+  position: absolute;
+  top: 12%;
+  right: 10px;
+  background-color:  darkorange;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+}

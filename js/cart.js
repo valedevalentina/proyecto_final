@@ -19,6 +19,14 @@ function calculateTotal(cartItems) {
     return cartItems.reduce((total, product) => total + calculateSubtotal(product), 0);
 }
 
+// Función para actualizar el badge del carrito
+function updateCartBadge() {
+    const cartItems = getCartItems();
+    const badge = document.getElementById('cart-badge');
+    const totalQuantity = cartItems.reduce((sum, product) => sum + product.quantity, 0);
+    badge.textContent = "("+totalQuantity+")";
+}
+
 // Incrementar la cantidad de un producto
 function increaseQuantity(productId) {
     const cart = getCartItems();
@@ -26,6 +34,7 @@ function increaseQuantity(productId) {
     product.quantity += 1;
     saveCartItems(cart);
     renderCart();
+    updateCartBadge(); // Actualizar el badge
 }
 
 // Disminuir la cantidad de un producto
@@ -36,17 +45,19 @@ function decreaseQuantity(productId) {
         product.quantity -= 1;
         saveCartItems(cart);
         renderCart();
+        updateCartBadge(); // Actualizar el badge
     } else {
-        removeProduct(productId); // Eliminar si la cantidad es 1 y se intenta reducir más
+        removeProduct(productId);
     }
 }
 
 // Eliminar un producto del carrito
 function removeProduct(productId) {
     let cart = getCartItems();
-    cart = cart.filter(item => item.id !== productId); // Filtrar productos para eliminar el deseado
+    cart = cart.filter(item => item.id !== productId);
     saveCartItems(cart);
     renderCart();
+    updateCartBadge(); // Actualizar el badge
 }
 
 // Renderizar los productos del carrito
@@ -99,6 +110,7 @@ function renderCart() {
 // Inicializar el carrito al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     renderCart();
+    updateCartBadge(); // Inicializar el badge
 });
 
 
