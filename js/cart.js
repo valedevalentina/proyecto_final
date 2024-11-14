@@ -19,14 +19,6 @@ function calculateTotal(cartItems) {
     return cartItems.reduce((total, product) => total + calculateSubtotal(product), 0);
 }
 
-// Función para actualizar el badge del carrito
-function updateCartBadge() {
-    const cartItems = getCartItems();
-    const badge = document.getElementById('cart-badge');
-    const totalQuantity = cartItems.reduce((sum, product) => sum + product.quantity, 0);
-    badge.textContent = "("+totalQuantity+")";
-}
-
 // Incrementar la cantidad de un producto
 function increaseQuantity(productId) {
     const cart = getCartItems();
@@ -110,7 +102,6 @@ function renderCart() {
 // Inicializar el carrito al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     renderCart();
-    updateCartBadge(); // Inicializar el badge
 });
 
 

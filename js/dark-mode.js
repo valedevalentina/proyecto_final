@@ -19,4 +19,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+// cartBadge.js
+function updateCartBadge() {
+  // Obtener productos del carrito desde localStorage
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const badge = document.getElementById('cart-badge');
 
+  // Verifica si el badge existe en la página antes de intentar actualizarlo
+  if (badge) {
+      // Suma la cantidad total de productos en el carrito
+      const totalQuantity = cartItems.reduce((sum, product) => sum + product.quantity, 0);
+      badge.textContent = totalQuantity; // Actualiza el contenido del badge
+  }
+}
+
+// Ejecutar la función cuando el contenido esté completamente cargado
+document.addEventListener('DOMContentLoaded', updateCartBadge);
