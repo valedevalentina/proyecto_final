@@ -94,6 +94,16 @@
           
           <!-- Dirección de envío -->
           <h6 class="mt-3">Dirección de Envío</h6>
+          <h6 class="mt-3">Departamento</h6>
+<select class="form-select" id="departmentSelect" required onchange="populateLocalities()">
+  <option value="">Selecciona un departamento</option>
+</select>
+
+<h6 class="mt-3">Localidad</h6>
+<select class="form-select" id="localitySelect" required>
+  <option value="">Selecciona una localidad</option>
+</select>
+          
           <div class="mb-3">
             <label for="street" class="form-label">Calle</label>
             <input type="text" class="form-control" id="street" required>
