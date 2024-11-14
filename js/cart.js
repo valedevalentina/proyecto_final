@@ -26,6 +26,7 @@ function increaseQuantity(productId) {
     product.quantity += 1;
     saveCartItems(cart);
     renderCart();
+    updateCartBadge(); // Actualizar el badge
 }
 
 // Disminuir la cantidad de un producto
@@ -36,6 +37,7 @@ function decreaseQuantity(productId) {
         product.quantity -= 1;
         saveCartItems(cart);
         renderCart();
+        updateCartBadge(); // Actualizar el badge
     } else {
         removeProduct(productId); // Eliminar si la cantidad es 1 y se intenta reducir más
     }
@@ -47,6 +49,7 @@ function removeProduct(productId) {
     cart = cart.filter(item => item.id !== productId); // Filtrar productos para eliminar el deseado
     saveCartItems(cart);
     renderCart();
+    updateCartBadge(); // Actualizar el badge
 }
 
 
