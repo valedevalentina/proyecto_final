@@ -198,6 +198,45 @@ function validatePurchaseButton() {
     const isFormValid = shippingType && paymentMethod && street && doorNumber;
     document.getElementById('confirmPurchaseBtn').disabled = !isFormValid;
   }
+  // Función para cargar los departamentos desde el JSON
+  async function loadDepartments() {
+    try {
+      const response = await fetch('data/localidades.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const departmentsData = await response.json();
+  
+      // Llenar el selector de departamentos
+      const departmentSelect = document.getElementById('departmentSelect');
+      departmentsData.forEach(department => {
+        const option = document.createElement('option');
+        option.value = department.id;
+        option.text = department.name;
+        departmentSelect.add(option);
+      });
+  
+      // Configurar el evento de cambio para cargar localidades
+      departmentSelect.addEventListener('change', () => populateLocalities(departmentsData));
+    } catch (error) {
+      console.error('Error al cargar el JSON:', error);
+    }
+  }
+  
+  // Función para cargar las localidades según el departamento seleccionado
+  function populateLocalities(departmentsData) {
+    const departmentSelect = document.getElementById('departmentSelect');
+    const localitySelect = document.getElementById('localitySelect');
+    localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
+  
+    const selectedDepartment = departmentsData.find(dep => dep.id == departmentSelect.value);
+    if (selectedDepartment) {
+      selectedDepartment.towns.forEach(town => {
+        const option = document.createElement('option');
+        option.value = town.id;
+        option.text = town.name;
+        localitySelect.add(option);
+      });
+    }
+  }
 
  
   document.getElementById('shippingForm').addEventListener('input', validatePurchaseButton);
