@@ -26,7 +26,6 @@ function increaseQuantity(productId) {
     product.quantity += 1;
     saveCartItems(cart);
     renderCart();
-    updateCartBadge(); // Actualizar el badge
 }
 
 // Disminuir la cantidad de un producto
@@ -37,67 +36,19 @@ function decreaseQuantity(productId) {
         product.quantity -= 1;
         saveCartItems(cart);
         renderCart();
-        updateCartBadge(); // Actualizar el badge
     } else {
-        removeProduct(productId);
+        removeProduct(productId); // Eliminar si la cantidad es 1 y se intenta reducir más
     }
 }
 
 // Eliminar un producto del carrito
 function removeProduct(productId) {
     let cart = getCartItems();
-    cart = cart.filter(item => item.id !== productId);
+    cart = cart.filter(item => item.id !== productId); // Filtrar productos para eliminar el deseado
     saveCartItems(cart);
     renderCart();
-    updateCartBadge(); // Actualizar el badge
 }
 
-// Renderizar los productos del carrito
-function renderCart() {
-    const cartItems = getCartItems();
-    const cartContainer = document.getElementById('cart-items');
-    const emptyMessage = document.getElementById('empty-message');
-    const totalPriceElement = document.getElementById('total-price');
-    const buyButton = document.getElementById('buy-btn');
-
-    if (cartItems.length === 0) {
-        emptyMessage.style.display = 'block';
-        cartContainer.innerHTML = '';
-        totalPriceElement.textContent = '';
-        buyButton.disabled = true;
-        return;
-    }
-
-    emptyMessage.style.display = 'none';
-    buyButton.disabled = false;
-
-    let cartHTML = '';
-    cartItems.forEach(product => {
-        const subtotal = calculateSubtotal(product);
-        cartHTML += `
-            <div class="cart-item d-flex pb-2 mb-2">
-                <img src="${product.image}" alt="${product.name}">
-                <div>
-                    <h5>${product.name}</h5>
-                    <p>${product.currency} ${product.cost.toFixed(0)}</p>
-                    <div class="d-flex align-items-center">
-                        <button class="btn btn-sm btn-outline-secondary me-2" id="btnEliminar" onclick="decreaseQuantity(${product.id})">-</button>
-                        <span>${product.quantity}</span>
-                        <button class="btn btn-sm btn-outline-secondary ms-2" onclick="increaseQuantity(${product.id})">+</button>
-                    </div>
-                </div>
-                <div class="subtotal">
-                    <h6>Subtotal: UYU ${subtotal.toFixed(0)}</h6>
-                    <button class="btn btn-sm btn-danger" onclick="removeProduct(${product.id})">Eliminar</button>
-                </div>
-            </div>
-        `;
-    });
-
-    const total = calculateTotal(cartItems);
-    totalPriceElement.textContent = `Total: UYU ${total.toFixed(0)}`;
-    cartContainer.innerHTML = cartHTML;
-}
 
 // Inicializar el carrito al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
@@ -106,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // desde acá lo que hace es ocultar el boton de comprar si no hay elementos en el carrito
+// Renderizar los productos del carrito
 function renderCart() {
     const cartItems = getCartItems();
     const cartContainer = document.getElementById('cart-items');
@@ -153,4 +105,81 @@ function renderCart() {
     totalPriceElement.textContent = `Total: UYU ${total.toFixed(0)}`;
     cartContainer.innerHTML = cartHTML;
 }
-// hasta acá.
+// Función para mostrar el modal de compra
+document.getElementById('buy-btn').addEventListener('click', () => {
+    console.log("Botón de comprar presionado");
+    const total = calculateTotal(getCartItems());
+    document.getElementById('finalTotal').textContent = `UYU ${total.toFixed(0)}`;
+    const purchaseModal = new bootstrap.Modal(document.getElementById('purchaseModal'));
+    purchaseModal.show();
+});
+
+// Función para actualizar el total con el envío
+function updateTotal() {
+    const cartItems = getCartItems();
+    const shippingCost = parseFloat(document.getElementById('shippingType').value);
+    const cartTotal = calculateTotal(cartItems);
+    const finalTotal = cartTotal + shippingCost;
+    document.getElementById('finalTotal').textContent = `UYU ${finalTotal.toFixed(0)}`;
+}
+
+// Función para completar la compra
+function completePurchase() {
+    // Aquí puedes agregar la lógica para procesar la compra
+    alert("Compra realizada con éxito.");
+    localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
+    renderCart(); // Renderizar el carrito vacío
+    const purchaseModal = bootstrap.Modal.getInstance(document.getElementById('purchaseModal'));
+    purchaseModal.hide();
+}
+// Mostrar el modal de compra al hacer clic en "Comprar"
+document.getElementById('buy-btn').addEventListener('click', () => {
+    console.log("Botón de comprar presionado");
+    const total = calculateTotal(getCartItems());
+    document.getElementById('total-cost').textContent = `Total: UYU ${total.toFixed(0)}`;
+    const shippingModal = new bootstrap.Modal(document.getElementById('shippingModal'));
+    shippingModal.show();
+});
+
+// Función para actualizar el total con el envío
+function updateTotal() {
+    const cartItems = getCartItems();
+    const cartTotal = calculateTotal(cartItems);
+
+    // Obtener el costo de envío seleccionado
+    const shippingCost = parseFloat(document.querySelector('input[name="shippingType"]:checked').value || 0);
+    
+    const finalTotal = cartTotal + (cartTotal * shippingCost);
+    document.getElementById('shipping-cost').textContent = `Costo de envío: UYU ${(cartTotal * shippingCost).toFixed(0)}`;
+    document.getElementById('total-cost').textContent = `Total: UYU ${finalTotal.toFixed(0)}`;
+}
+
+// Escuchar el cambio de selección en el tipo de envío
+document.querySelectorAll('input[name="shippingType"]').forEach(input => {
+    input.addEventListener('change', updateTotal);
+});
+
+// Función para completar la compra
+function completePurchase() {
+    alert("Compra realizada con éxito.");
+    localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
+    renderCart(); // Renderizar el carrito vacío
+    const shippingModal = bootstrap.Modal.getInstance(document.getElementById('shippingModal'));
+    shippingModal.hide();
+}
+
+// Evento para el botón de confirmar compra en el modal
+document.getElementById('confirmPurchaseBtn').addEventListener('click', completePurchase);
+
+function handlePayment() {
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+    if (paymentMethod) {
+      if (paymentMethod.value === "transfer") {
+        window.location.href = "https://ebanking.brou.com.uy/frontend/loginStep1";
+      } else if (paymentMethod.value === "mercadoPago") {
+        window.location.href = "https://www.mercadopago.com";
+      }
+    } else {
+      alert("Por favor, selecciona un método de pago.");
+    }
+  }
