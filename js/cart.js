@@ -186,3 +186,19 @@ function handlePayment() {
       alert("Por favor, selecciona un método de pago.");
     }
   }
+//BOTON COMPRAR VALIDACION 
+
+function validatePurchaseButton() {
+    const shippingType = document.querySelector('input[name="shippingType"]:checked');
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+    const street = document.getElementById('street').value.trim();
+    const doorNumber = document.getElementById('doorNumber').value.trim();
+    
+    // Habilitar o deshabilitar el botón 
+    const isFormValid = shippingType && paymentMethod && street && doorNumber;
+    document.getElementById('confirmPurchaseBtn').disabled = !isFormValid;
+  }
+
+ 
+  document.getElementById('shippingForm').addEventListener('input', validatePurchaseButton);
+  document.getElementById('shippingForm').addEventListener('change', validatePurchaseButton);
