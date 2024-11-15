@@ -112,8 +112,8 @@ function renderCart() {
 document.getElementById('buy-btn').addEventListener('click', () => {
     console.log("Botón de comprar presionado");
     const total = calculateTotal(getCartItems());
-    document.getElementById('finalTotal').textContent = `UYU ${total.toFixed(0)}`;
-    const purchaseModal = new bootstrap.Modal(document.getElementById('purchaseModal'));
+    document.getElementById('total-cost').textContent = `UYU ${total.toFixed(0)}`;
+    const purchaseModal = new bootstrap.Modal(document.getElementById('shippingModal'));
     purchaseModal.show();
 });
 
@@ -135,14 +135,6 @@ function completePurchase() {
     const purchaseModal = bootstrap.Modal.getInstance(document.getElementById('purchaseModal'));
     purchaseModal.hide();
 }
-// Mostrar el modal de compra al hacer clic en "Comprar"
-document.getElementById('buy-btn').addEventListener('click', () => {
-    console.log("Botón de comprar presionado");
-    const total = calculateTotal(getCartItems());
-    document.getElementById('total-cost').textContent = `Total: UYU ${total.toFixed(0)}`;
-    const shippingModal = new bootstrap.Modal(document.getElementById('shippingModal'));
-    shippingModal.show();
-});
 
 // Función para actualizar el total con el envío
 function updateTotal() {
@@ -188,14 +180,92 @@ function handlePayment() {
   }
 //BOTON COMPRAR VALIDACION 
 
+// Función para validar el botón de compra
 function validatePurchaseButton() {
     const shippingType = document.querySelector('input[name="shippingType"]:checked');
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-    const street = document.getElementById('street').value.trim();
-    const doorNumber = document.getElementById('doorNumber').value.trim();
+    const street = document.getElementById('street')?.value.trim(); // Verificar que el elemento exista
+    const doorNumber = document.getElementById('doorNumber')?.value.trim(); // Verificar que el elemento exista
     
-    // Habilitar o deshabilitar el botón 
+    // Validar que todos los campos estén completados para habilitar el botón
     const isFormValid = shippingType && paymentMethod && street && doorNumber;
-    document.getElementById('confirmPurchaseBtn').disabled = !isFormValid;
-  }
+    const confirmPurchaseBtn = document.getElementById('confirmPurchaseBtn');
+    if (confirmPurchaseBtn) {
+        confirmPurchaseBtn.disabled = !isFormValid;
+    }
+}
 
+// Ejecutar validatePurchaseButton en los eventos de cambio
+document.addEventListener('DOMContentLoaded', () => {
+    loadDepartments();
+
+    // Invocar la validación al cargar la página
+    validatePurchaseButton();
+
+    // Agregar eventos de cambio a cada elemento de formulario relevante
+    document.querySelectorAll('input[name="shippingType"]').forEach(input => {
+        input.addEventListener('change', validatePurchaseButton);
+    });
+
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(input => {
+        input.addEventListener('change', validatePurchaseButton);
+    });
+
+    document.getElementById('street')?.addEventListener('input', validatePurchaseButton);
+    document.getElementById('doorNumber')?.addEventListener('input', validatePurchaseButton);
+});
+
+  let departmentsData = []; // Variable global para almacenar los datos
+
+  // Función para cargar los departamentos desde el JSON
+  async function loadDepartments() {
+      try {
+          const response = await fetch('data/localidades.json');
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          
+          departmentsData = await response.json();
+  
+          // Llenar el selector de departamentos
+          const departmentSelect = document.getElementById('departmentSelect');
+          departmentsData.forEach(department => {
+              const option = document.createElement('option');
+              option.value = department.id;
+              option.text = department.name;
+              departmentSelect.add(option);
+          });
+  
+          // Configurar el evento de cambio para cargar localidades
+          departmentSelect.addEventListener('change', populateLocalities);
+      } catch (error) {
+          console.error('Error al cargar el JSON:', error);
+      }
+  }
+  
+  // Función para cargar las localidades según el departamento seleccionado
+  function populateLocalities() {
+      const departmentSelect = document.getElementById('departmentSelect');
+      const localitySelect = document.getElementById('localitySelect');
+      localitySelect.innerHTML = '<option value="">Selecciona una localidad</option>';
+  
+      // Verificar que departmentsData esté disponible y que departmentSelect tenga un valor
+      if (departmentsData.length === 0 || !departmentSelect.value) {
+          console.warn('No hay datos de departamentos o no se ha seleccionado un departamento.');
+          return;
+      }
+  
+      const selectedDepartment = departmentsData.find(dep => dep.id == departmentSelect.value);
+      if (selectedDepartment) {
+          selectedDepartment.towns.forEach(town => {
+              const option = document.createElement('option');
+              option.value = town.id;
+              option.text = town.name;
+              localitySelect.add(option);
+          });
+      }
+  }
+  
+  // Llamar a loadDepartments cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    loadDepartments();
+});
+  
