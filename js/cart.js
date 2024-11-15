@@ -169,15 +169,18 @@ document.getElementById('confirmPurchaseBtn').addEventListener('click', complete
 function handlePayment() {
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
     if (paymentMethod) {
-      if (paymentMethod.value === "transfer") {
-        window.location.href = "https://ebanking.brou.com.uy/frontend/loginStep1";
-      } else if (paymentMethod.value === "mercadoPago") {
-        window.location.href = "https://www.mercadopago.com";
-      }
+        alert("Compra realizada con éxito.");
+        setTimeout(() => {
+            if (paymentMethod.value === "transfer") {
+                window.location.href = "https://ebanking.brou.com.uy/frontend/loginStep1";
+            } else if (paymentMethod.value === "mercadoPago") {
+                window.location.href = "https://www.mercadopago.com";
+            }
+        }, 500); // Espera 500ms antes de redirigir
     } else {
-      alert("Por favor, selecciona un método de pago.");
+        alert("Por favor, selecciona un método de pago.");
     }
-  }
+}
 //BOTON COMPRAR VALIDACION 
 
 // Función para validar el botón de compra
