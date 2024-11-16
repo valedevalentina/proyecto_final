@@ -52,14 +52,8 @@ function removeProduct(productId) {
     updateCartBadge(); // Actualizar el badge
 }
 
-
-// Inicializar el carrito al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    renderCart();
-});
-
-
 // desde acá lo que hace es ocultar el boton de comprar si no hay elementos en el carrito
+
 // Renderizar los productos del carrito
 function renderCart() {
     const cartItems = getCartItems();
@@ -108,6 +102,12 @@ function renderCart() {
     totalPriceElement.textContent = `Total: UYU ${total.toFixed(0)}`;
     cartContainer.innerHTML = cartHTML;
 }
+
+// Inicializar el carrito al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+});
+
 // Función para mostrar el modal de compra
 document.getElementById('buy-btn').addEventListener('click', () => {
     console.log("Botón de comprar presionado");
@@ -116,15 +116,6 @@ document.getElementById('buy-btn').addEventListener('click', () => {
     const purchaseModal = new bootstrap.Modal(document.getElementById('shippingModal'));
     purchaseModal.show();
 });
-
-// Función para actualizar el total con el envío
-function updateTotal() {
-    const cartItems = getCartItems();
-    const shippingCost = parseFloat(document.getElementById('shippingType').value);
-    const cartTotal = calculateTotal(cartItems);
-    const finalTotal = cartTotal + shippingCost;
-    document.getElementById('finalTotal').textContent = `UYU ${finalTotal.toFixed(0)}`;
-}
 
 // Función para completar la compra
 function completePurchase() {
@@ -172,9 +163,9 @@ function handlePayment() {
         alert("Compra realizada con éxito.");
         setTimeout(() => {
             if (paymentMethod.value === "transfer") {
-                window.location.href = "https://ebanking.brou.com.uy/frontend/loginStep1";
+                window.open("https://ebanking.brou.com.uy/frontend/loginStep1", "_blank");
             } else if (paymentMethod.value === "mercadoPago") {
-                window.location.href = "https://www.mercadopago.com";
+                window.open("https://www.mercadopago.com", "_blank");
             }
         }, 500); // Espera 500ms antes de redirigir
     } else {
