@@ -1,5 +1,5 @@
-const CATEGORIES_URL = "http://localhost:3000/json/cats";
-const PUBLISH_PRODUCT_URL = "http://localhost:3000/json/sell";
+const CATEGORIES_URL = "http://localhost:3000/json/cats/cat";
+const PUBLISH_PRODUCT_URL = "http://localhost:3000/json/sell/publish";
 const PRODUCTS_URL = "http://localhost:3000/json/cats_products/";
 const PRODUCT_INFO_URL = "http://localhost:3000/json/products/";
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/json/products_comments/";
