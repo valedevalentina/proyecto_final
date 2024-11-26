@@ -9,11 +9,14 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/dark-mode.css" rel="stylesheet" >
+
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
+      <button id="mode-toggle" class="btn btn-outline-light me-2">🌓 Modo Noche</button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,7 +37,10 @@
                NombreUsuario
               </a>
              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
-              <li><a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a></li>
+              <li>
+                <a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a>
+                <span id="cart-badge" class="cart-badge">(0)</span>
+              </li>
                <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
                <li><a class="dropdown-item" href="login.html" data-action="cerrar-sesion">Cerrar sesión</a></li>
              </ul>
@@ -233,6 +239,8 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
+  <script src="js/dark-mode.js"></script>
+
 </body>
 
 </html>

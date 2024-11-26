@@ -72,11 +72,18 @@ if (sesionIniciada && userEmail) {
                         <button id="btnCalificar" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ratingModal">Calificar</button>
                         </p>
                         <div class="btn-group">
-                            <button class="btn btn-primary">Comprar ahora</button>
-                            <button class="btn btn-secondary">Agregar al carrito</button>
+                            <button class="btn btn-primary" id="buyButton">Agregar al carrito</button>
                         </div>
                     </div>
                 `;
+
+                // Agregar evento al botón "Comprar ahora"
+                const buyButton = document.getElementById('buyButton');
+                buyButton.addEventListener('click', () => {
+                    addToCart(product); // Llamar a la función para guardar en localStorage
+                    const buyModal = new bootstrap.Modal(document.getElementById('buyModal'));
+                    buyModal.show(); // Mostrar el modal
+                });
 
                 document.querySelectorAll('.thumbnail').forEach(thumbnail => {
                     thumbnail.addEventListener('click', function () {
@@ -222,27 +229,28 @@ fetch(url_comment)
         document.getElementById('average-score').innerHTML = `${starsHTML} (${totalComments} comentarios)`;
     });
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const modeToggleButton = document.getElementById('mode-toggle');
-    const currentTheme = localStorage.getItem('theme');
-  
-    // Aplicar el tema guardado en localStorage
-    if (currentTheme) {
-      document.body.classList.add(currentTheme);
-      modeToggleButton.textContent = currentTheme === 'dark-mode' ? '🌞 Modo Día' : '🌓 Modo Noche';
+
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Obtener carrito actual o inicializar
+
+    // Verificar si el producto ya está en el carrito
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+        existingProduct.quantity += 1; // Incrementar la cantidad
+    } else {
+        // Crear objeto con los datos relevantes
+        const productToSave = {
+            id: product.id,
+            name: product.name,
+            description: product.description,
+            cost: product.cost,
+            currency: product.currency,
+            image: product.image,
+            quantity: 1
+        };
+        cart.push(productToSave); // Agregar nuevo producto
     }
-  
-    // Cambiar tema cuando el usuario haga clic en el botón
-    modeToggleButton.addEventListener('click', function() {
-      if (document.body.classList.contains('dark-mode')) {
-        document.body.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light-mode');
-        modeToggleButton.textContent = '🌓 Modo Noche';
-      } else {
-        document.body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark-mode');
-        modeToggleButton.textContent = '🌞 Modo Día';
-      }
-    });
-  });
-  
+
+    localStorage.setItem('cart', JSON.stringify(cart)); // Guardar en localStorage
+    console.log("Producto agregado al carrito:", cart);
+}
