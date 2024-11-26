@@ -9,11 +9,13 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/dark-mode.css" rel="stylesheet" >
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
+      <button id="mode-toggle" class="btn btn-outline-light me-2">🌓 Modo Noche</button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,28 +31,117 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-        </li>
-        <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="boton-usuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    NombreUsuario
-</a>
-<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
-    <li><a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a></li>
-    <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
-    <li><a class="dropdown-item" href="login.html" data-action="cerrar-sesion">Cerrar sesión</a></li>
-</ul>
-</li>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="boton-usuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              NombreUsuario
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-usuario">
+              <li>
+                <a class="dropdown-item" href="cart.html" onclick="goToPage('carrito')">Mi carrito</a>
+                <span id="cart-badge" class="cart-badge">(0)</span>
+              </li>
+              <li><a class="dropdown-item" href="my-profile.html" onclick="goToPage('perfil')">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="login.html" data-action="cerrar-sesion">Cerrar sesión</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+ 
+  <main class="cart-container">
+    <div class="cart p-3 bg-dark text-white">
+        <h2>Productos del carrito</h2>
+        <div id="empty-message" class="empty-message">
+          <p>Tu carrito está vacío. ¡Agrega productos para comenzar!</p>
+          <button onclick="window.location.href='categories.html'" class="btn btn-primary mt-2">Comienza a comprar</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+          <!-- Productos aquí -->
+        </div> 
+        <h4 id="total-price" class="mt-3"></h4>
+        <div class="buy-btn-container">
+            <button class="btn btn-warning" id="buy-btn" disabled>Comprar</button>
+        </div>
     </div>
   </main>
+
+  <!-- Modal de Tipo de Envío, Dirección y Método de Pago -->
+<div class="modal fade" id="shippingModal" tabindex="-1" aria-labelledby="shippingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="shippingModalLabel">Detalles de Envío y Pago</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="shippingForm">
+          <!-- Selección de tipo de envío -->
+          <h6>Selecciona el tipo de envío</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="shippingType" id="premium" value="0.15" required>
+            <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="shippingType" id="express" value="0.07">
+            <label class="form-check-label" for="express">Express 5 a 8 días (7%) </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="shippingType" id="standard" value="0.05">
+            <label class="form-check-label" for="standard">Standard 12 a 15 días (5%) </label>
+          </div>
+          
+          <!-- Dirección de envío -->
+          <h6 class="mt-3">Dirección de Envío</h6>
+          <h6 class="mt-3">Departamento</h6>
+<select class="form-select" id="departmentSelect" required onchange="populateLocalities()">
+  <option value="">Selecciona un departamento</option>
+</select>
+
+<h6 class="mt-3">Localidad</h6>
+<select class="form-select" id="localitySelect" required>
+  <option value="">Selecciona una localidad</option>
+</select>
+          
+          <div class="mb-3">
+            <label for="street" class="form-label">Calle</label>
+            <input type="text" class="form-control" id="street" required>
+          </div>
+          <div class="mb-3">
+            <label for="doorNumber" class="form-label">Número de puerta</label>
+            <input type="text" class="form-control" id="doorNumber" required>
+          </div>
+          <div class="mb-3">
+            <label for="apartment" class="form-label">Apartamento (opcional)</label>
+            <input type="text" class="form-control" id="apartment">
+          </div>
+
+          <!-- Selección de método de pago -->
+          <h6 class="mt-3">Método de Pago</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="transfer" required>
+            <label class="form-check-label" for="bankTransfer">Transferencia Bancaria</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="mercadoPago" value="mercadoPago">
+            <label class="form-check-label" for="mercadoPago">Mercado Pago</label>
+          </div>
+
+          <!-- Costo total -->
+          <h5 class="mt-3">Costo Total</h5>
+          <p id="shipping-cost">Costo de envío: UYU 0</p>
+          <p id="total-cost">Total: UYU 0</p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="confirmPurchaseBtn" onclick="handlePayment()" disabled>Finalizar comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -59,6 +150,7 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -67,9 +159,13 @@
       <div></div>
     </div>
   </div>
+  
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/dark-mode.js"></script>
+  
 </body>
 
 </html>
