@@ -1,5 +1,8 @@
-# Ignorar node_modules
+# Ignorar node_modules en cualquier lugar
 node_modules/
+
+# Ignorar node_modules específico en la carpeta backend
+/backend/node_modules/
 
 # Ignorar archivos de entorno
 .env
