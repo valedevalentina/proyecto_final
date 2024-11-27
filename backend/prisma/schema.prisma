@@ -36,11 +36,6 @@ model ProductOnCart {
   productId   Int
   product     Product @relation(fields: [productId], references: [id])
   quantity    Int
-  name        String? // Campo opcional
-  description String? // Campo opcional
-  cost        Float?  // Campo opcional
-  currency    String? // Campo opcional
-  image       String? // Campo opcional
 }
 
 model Product {
