@@ -22,31 +22,35 @@ model User {
   carts    Cart[]
 }
 
+model Cart {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  user     User    @relation(fields: [userId], references: [id])
+  products ProductOnCart[]
+}
+
+model ProductOnCart {
+  id          Int     @id @default(autoincrement())
+  cartId      Int
+  cart        Cart    @relation(fields: [cartId], references: [id])
+  productId   Int
+  product     Product @relation(fields: [productId], references: [id])
+  quantity    Int
+  name        String? // Campo opcional
+  description String? // Campo opcional
+  cost        Float?  // Campo opcional
+  currency    String? // Campo opcional
+  image       String? // Campo opcional
+}
+
 model Product {
   id          Int     @id @default(autoincrement())
-  name  String
+  name        String
   description String
-  cost Int
-  currency String
-  image String
-  quantity  Int
-  productsInCart ProductInCart[] // Relación con el modelo ProductInCart
+  cost        Float
+  currency    String
+  image       String
+  // Relación con el modelo ProductOnCart
+  productOnCarts ProductOnCart[]
 }
 
-model Cart {
-  id          Int     @id @default(autoincrement())
-  userId      Int     
-  user        User    @relation(fields: [userId], references: [id])
-  products   ProductInCart[] // Relación con el modelo ProductInCart
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-}
-
-// Modelo intermedio para la relación muchos a muchos
-model ProductInCart {
-  id        Int      @id @default(autoincrement())
-  cartId    Int
-  productId Int
-  cart      Cart     @relation(fields: [cartId], references: [id])
-  product   Product  @relation(fields: [productId], references: [id])
-}

@@ -6,49 +6,52 @@ const router = express.Router();
 
 router.use(express.json());
 
-
-// Endpont de login
-router.post('/cart', async (req, res) => {
+// Endpoint para guardar los items del carrito en la base de datos
+  router.post('/cart', async (req, res) => {
     try {
-      const {  userId, products, name, description, cost, currency, image, quantity, productsInCart} = req.body;
-//HACER VALIDACIONES DE CAMPOS REQUERIDOS, POSMAN
-      // Validar que se envíen los campos requeridos
-     /* if (!username || !password) {
-        return res.status(400).json({
-          error: 'Debe proporcionar usuario y contraseña.',
+      const { userId, products } = req.body;
+
+      // Validar si el usuario existe
+      const userExists = await prisma.user.findUnique({
+        where: { id: userId },
+      });
+
+      if (!userExists) {
+        return res.status(404).json({
+          error: 'Usuario no encontrado.',
         });
-      } */
-  
-      // Buscar el usuario
+      }
+
+      // Crear el carrito y asociarlo con los productos
       const newCart = await prisma.cart.create({
         data: {
-            userId: userId,
-            // Si deseas agregar productos, puedes usar la propiedad connect
-            products: {
-                create: products.map(product => ({
-                    name: product.name,
-                    description: product.description,
-                    cost: product.cost,
-                    currency: product.currency,
-                    image: product.image,
-                    quantity: product.quantity
-                }))
-            }
-        }
-    });
-      
+          userId: userId,
+          // Si deseas agregar productos, puedes usar la propiedad connect
+          products: {
+            create: products.map(product => ({
+              name: product.name,
+              productId: product.id, // Relaciona con el producto existente
+              description: product.description,
+              cost: product.cost,
+              currency: product.currency,
+              image: product.image,
+              quantity: product.quantity
+            }))
+          },
+        },
+      });
+
       res.json({
-        mensaje: 'Cart guardado exitosamente',
+        mensaje: 'Carrito guardado exitosamente',
         cart: {
           id: newCart.id,
         },
       });
     } catch (error) {
-      console.error('Error en login:', error);
+      console.error('Error al guardar carrito:', error);
       res.status(500).json({
-        error: 'Error al crear carro',
+        error: 'Error al guardar carrito',
       });
     }
   });
-    
   module.exports = router;
