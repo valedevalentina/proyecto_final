@@ -253,4 +253,7 @@ function addToCart(product) {
 
     localStorage.setItem('cart', JSON.stringify(cart)); // Guardar en localStorage
     console.log("Producto agregado al carrito:", cart);
+
+    // Llamar a updateCartBadge para actualizar el badge en tiempo real
+    updateCartBadge();
 }
