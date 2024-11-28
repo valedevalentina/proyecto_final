@@ -1,10 +1,10 @@
-const CATEGORIES_URL = "http://localhost:3000/json/cats/cat";
-const PUBLISH_PRODUCT_URL = "http://localhost:3000/json/sell/publish";
-const PRODUCTS_URL = "http://localhost:3000/json/cats_products/";
-const PRODUCT_INFO_URL = "http://localhost:3000/json/products/";
-const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/json/products_comments/";
-const CART_INFO_URL = "http://localhost:3000/json/products_comments/user_cart/";
-const CART_BUY_URL = "http://localhost:3000/json/cart/";
+const CATEGORIES_URL = "http://localhost:4000/api/json/cats/cat";
+const PUBLISH_PRODUCT_URL = "http://localhost:4000/api/json/sell/publish";
+const PRODUCTS_URL = "http://localhost:4000/api/json/cats_products/";
+const PRODUCT_INFO_URL = "http://localhost:4000/api/json/products/";
+const PRODUCT_INFO_COMMENTS_URL = "http://localhost:4000/api/json/products_comments/";
+const CART_INFO_URL = "http://localhost:4000/api/json/products_comments/user_cart/";
+const CART_BUY_URL = "http://localhost:4000/api/json/cart/";
 const EXT_TYPE = ".json";
 
 let showSpinner = function(){

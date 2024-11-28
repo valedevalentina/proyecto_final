@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // Ruta base de la carpeta json
-const jsonBasePath = path.join(__dirname, 'json'); // Ajustado para que use la ruta correcta dentro de backend
+const jsonBasePath = path.join(__dirname, '../json'); // Ajustado para que use la ruta correcta dentro de backend
 
 /**
  * Endpoint para devolver el contenido de la carpeta `json`
