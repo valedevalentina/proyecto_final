@@ -157,10 +157,9 @@ function handlePayment() {
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
     if (paymentMethod) {
         alert("Compra realizada con éxito.");
-        setTimeout(() => {
-            if (paymentMethod.value === "transfer") {
-                window.open("https://ebanking.brou.com.uy/frontend/loginStep1", "_blank");
-            } else if (paymentMethod.value === "mercadoPago") {
+        if (paymentMethod.value === "transfer") {
+            window.open("https://ebanking.brou.com.uy/frontend/loginStep1", "_blank");
+        } else if (paymentMethod.value === "mercadoPago") {
             window.open("https://www.mercadopago.com", "_blank");
         }
     } else {
