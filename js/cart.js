@@ -16,8 +16,12 @@ function calculateSubtotal(product) {
 
 // Calcular el total del carrito
 function calculateTotal(cartItems) {
-    return cartItems.reduce((total, product) => total + calculateSubtotal(product), 0);
+    return cartItems.reduce((total, product) => {
+        const subtotal = calculateSubtotal(product);
+        return total + subtotal;
+    }, 0);
 }
+
 
 // Incrementar la cantidad de un producto
 function increaseQuantity(productId) {
@@ -68,6 +72,7 @@ function renderCart() {
         totalPriceElement.textContent = '';        // Limpiar el precio total
         buyButton.style.display = 'none';          // Ocultar el botón "Comprar"
         buyButton.disabled = true;                 // Deshabilitar el botón "Comprar" por seguridad
+        updateCartBadge(); // Actualizar el badge para reflejar que el carrito está vacío
         return;
     }
 
@@ -145,15 +150,6 @@ document.querySelectorAll('input[name="shippingType"]').forEach(input => {
     input.addEventListener('change', updateTotal);
 });
 
-// Función para completar la compra
-function completePurchase() {
-    alert("Compra realizada con éxito.");
-    localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
-    renderCart(); // Renderizar el carrito vacío
-    const shippingModal = bootstrap.Modal.getInstance(document.getElementById('shippingModal'));
-    shippingModal.hide();
-}
-
 // Evento para el botón de confirmar compra en el modal
 document.getElementById('confirmPurchaseBtn').addEventListener('click', completePurchase);
 
@@ -165,9 +161,8 @@ function handlePayment() {
             if (paymentMethod.value === "transfer") {
                 window.open("https://ebanking.brou.com.uy/frontend/loginStep1", "_blank");
             } else if (paymentMethod.value === "mercadoPago") {
-                window.open("https://www.mercadopago.com", "_blank");
-            }
-        }, 500); // Espera 500ms antes de redirigir
+            window.open("https://www.mercadopago.com", "_blank");
+        }
     } else {
         alert("Por favor, selecciona un método de pago.");
     }
