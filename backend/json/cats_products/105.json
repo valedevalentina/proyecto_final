@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "catID": 105,
     "catName": "Computadoras",
@@ -12,4 +13,20 @@
             "image": "img/prod40281_1.jpg"
         }
     ]
+=======
+{
+    "catID": 105,
+    "catName": "Computadoras",
+    "products": [
+        {
+            "id": 40281,
+            "name": "Computadora de escritorio",
+            "description": "Computadora de escritorio. Potencia y rendimiento, para juegos o trabajo",
+            "cost": 2599,
+            "currency": "USD",
+            "soldCount": 11,
+            "image": "img/prod40281_1.jpg"
+        }
+    ]
+>>>>>>> bd58125157988b050f849f4d045c866ca343f517
 }

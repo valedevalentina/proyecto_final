@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 {
     "catID": 107,
     "catName": "Electrodomésticos",
     "products": []
+=======
+{
+    "catID": 107,
+    "catName": "Electrodomésticos",
+    "products": []
+>>>>>>> bd58125157988b050f849f4d045c866ca343f517
 }

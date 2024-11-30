@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "product": 60801,
@@ -6,4 +7,14 @@
         "user": "jaime_gil",
         "dateTime": "2021-12-02 11:23:32"
     }
+=======
+[
+    {
+        "product": 60801,
+        "score": 3,
+        "description": "Es algo chico, pero está bien para una familia pequeña.",
+        "user": "jaime_gil",
+        "dateTime": "2021-12-02 11:23:32"
+    }
+>>>>>>> bd58125157988b050f849f4d045c866ca343f517
 ]

@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 {
     "catID": 104,
     "catName": "Herramientas",
     "products": []
+=======
+{
+    "catID": 104,
+    "catName": "Herramientas",
+    "products": []
+>>>>>>> bd58125157988b050f849f4d045c866ca343f517
 }

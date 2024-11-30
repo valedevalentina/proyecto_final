@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Endpoint de registro (opcional, pero útil para crear usuarios)
+// Endpoint de registro 
 router.post('/user', async (req, res) => {
   try {
     const { username, password } = req.body;

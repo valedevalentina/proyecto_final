@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "product": 60803,
@@ -6,4 +7,14 @@
         "user": "bruno_diaz",
         "dateTime": "2022-11-21 03:33:41"
     }
+=======
+[
+    {
+        "product": 60803,
+        "score": 5,
+        "description": "Es grande. Entra más de lo que parece",
+        "user": "bruno_diaz",
+        "dateTime": "2022-11-21 03:33:41"
+    }
+>>>>>>> bd58125157988b050f849f4d045c866ca343f517
 ]
