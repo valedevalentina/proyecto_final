@@ -122,16 +122,6 @@ document.getElementById('buy-btn').addEventListener('click', () => {
     purchaseModal.show();
 });
 
-// Función para completar la compra
-function completePurchase() {
-    // Aquí puedes agregar la lógica para procesar la compra
-    alert("Compra realizada con éxito.");
-    localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
-    renderCart(); // Renderizar el carrito vacío
-    const purchaseModal = bootstrap.Modal.getInstance(document.getElementById('purchaseModal'));
-    purchaseModal.hide();
-}
-
 // Función para actualizar el total con el envío
 function updateTotal() {
     const cartItems = getCartItems();
@@ -149,6 +139,16 @@ function updateTotal() {
 document.querySelectorAll('input[name="shippingType"]').forEach(input => {
     input.addEventListener('change', updateTotal);
 });
+
+// Función para completar la compra
+function completePurchase() {
+    // Aquí puedes agregar la lógica para procesar la compra
+    alert("Compra realizada con éxito.");
+    localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
+    renderCart(); // Renderizar el carrito vacío
+    const purchaseModal = bootstrap.Modal.getInstance(document.getElementById('purchaseModal'));
+    purchaseModal.hide();
+}
 
 // Evento para el botón de confirmar compra en el modal
 document.getElementById('confirmPurchaseBtn').addEventListener('click', completePurchase);
