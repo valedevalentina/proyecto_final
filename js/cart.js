@@ -146,7 +146,7 @@ function completePurchase() {
     alert("Compra realizada con éxito.");
     localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
     renderCart(); // Renderizar el carrito vacío
-    const purchaseModal = bootstrap.Modal.getInstance(document.getElementById('purchaseModal'));
+    const purchaseModal = bootstrap.Modal.getInstance(document.getElementById('shippingModal'));
     purchaseModal.hide();
 }
 
