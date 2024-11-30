@@ -18,15 +18,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    document.querySelector('.dropdown-item[data-action="cerrar-sesion"]').addEventListener("click", function() {
+    document.getElementById('cerrar-sesion').addEventListener("click", function() {
         cerrarSesion();
     });
 
-    document.querySelector('.dropdown-item[data-action="mi-carrito"]').addEventListener("click", function() {
+    document.getElementById('mi-carrito').addEventListener("click", function() {
         window.location = "cart.html";
     });
 
-    document.querySelector('.dropdown-item[data-action="mi-perfil"]').addEventListener("click", function() {
+    document.getElementById('mi-perfil').addEventListener("click", function() {
         window.location = "my-profile.html";
     });
 

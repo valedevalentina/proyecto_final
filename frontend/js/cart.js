@@ -1,3 +1,47 @@
+//---------------------------ENDPOINT POST/CART INICIO------------------------------------------//
+// Función para guardar el carrito en el servidor
+async function saveCartToServer() {
+    try {
+        // Obtener el carrito desde localStorage
+        const cartItems = getCartItems();
+
+        if (cartItems.length === 0) {
+            alert("El carrito está vacío. Agrega productos antes de guardar.");
+            return;
+        }
+
+        // Token de autenticación (debería ser obtenido al iniciar sesión)
+        const token = "TU_TOKEN_AQUI"; // Reemplaza con la lógica para obtener el token real
+
+        if (!token) {
+            throw new Error("No se encontró un token de autenticación. Por favor, inicia sesión.");
+        }
+
+        // Enviar los datos al backend
+        const response = await fetch('/api/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`, // Token para autenticar la solicitud
+            },
+            body: JSON.stringify({ products: cartItems }), // Enviar los productos en formato JSON
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Error al guardar el carrito");
+        }
+
+        const data = await response.json();
+        console.log("Carrito guardado exitosamente:", data);
+        alert("¡Carrito guardado exitosamente!");
+    } catch (error) {
+        console.error("Error al guardar el carrito:", error.message);
+        alert(`Error: ${error.message}`);
+    }
+}
+//---------------------------ENDPOINT POST/CART FIN------------------------------------------//
+
 // Obtener los productos del localStorage
 function getCartItems() {
     return JSON.parse(localStorage.getItem('cart')) || [];
@@ -27,6 +71,8 @@ function increaseQuantity(productId) {
     saveCartItems(cart);
     renderCart();
     updateCartBadge(); // Actualizar el badge
+ // saveCartToServer(); // Sincronizar con el servidor
+
 }
 
 // Disminuir la cantidad de un producto
@@ -38,6 +84,7 @@ function decreaseQuantity(productId) {
         saveCartItems(cart);
         renderCart();
         updateCartBadge(); // Actualizar el badge
+      //saveCartToServer(); // Sincronizar con el servidor
     } else {
         removeProduct(productId); // Eliminar si la cantidad es 1 y se intenta reducir más
     }
@@ -50,6 +97,7 @@ function removeProduct(productId) {
     saveCartItems(cart);
     renderCart();
     updateCartBadge(); // Actualizar el badge
+ // saveCartToServer(); // Sincronizar con el servidor
 }
 
 // desde acá lo que hace es ocultar el boton de comprar si no hay elementos en el carrito
@@ -262,4 +310,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', () => {
     loadDepartments();
 });
-  
+
