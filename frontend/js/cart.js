@@ -4,37 +4,50 @@ async function saveCartToServer() {
     try {
         // Obtener el carrito desde localStorage
         const cartItems = getCartItems();
-
+        console.log(cartItems);
         if (cartItems.length === 0) {
             alert("El carrito está vacío. Agrega productos antes de guardar.");
             return;
         }
 
         // Token de autenticación (debería ser obtenido al iniciar sesión)
-        const token = "TU_TOKEN_AQUI"; // Reemplaza con la lógica para obtener el token real
 
         if (!token) {
             throw new Error("No se encontró un token de autenticación. Por favor, inicia sesión.");
         }
 
-        // Enviar los datos al backend
-        const response = await fetch('/api/cart', {
+        // Preparar el cuerpo de la solicitud
+        const requestBody = {
+            userId: 5, // Asumiendo que el userId es 5, ajustar según sea necesario
+            products: cartItems.map(item => ({
+                productId: item.id,
+                quantity: item.quantity
+            }))
+        };
+console.log(requestBody)
+        // Realizar la solicitud HTTP al backend
+       await fetch('http://localhost:4000/api/cart', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`, // Token para autenticar la solicitud
+                Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ products: cartItems }), // Enviar los productos en formato JSON
+            body: JSON.stringify(requestBody)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Compra realizada con éxito:', data);
+            // Vaciar el carrito después de la compra
+            localStorage.removeItem('cart');
+            renderCart(); // Renderizar el carrito vacío
+            const shippingModal = bootstrap.Modal.getInstance(document.getElementById('shippingModal'));
+            shippingModal.hide();
+            alert("¡Carrito guardado exitosamente!");
+        })
+        .catch(error => {
+            console.error('Error al realizar la compra:', error);
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || "Error al guardar el carrito");
-        }
-
-        const data = await response.json();
-        console.log("Carrito guardado exitosamente:", data);
-        alert("¡Carrito guardado exitosamente!");
     } catch (error) {
         console.error("Error al guardar el carrito:", error.message);
         alert(`Error: ${error.message}`);
@@ -168,6 +181,7 @@ document.getElementById('buy-btn').addEventListener('click', () => {
 // Función para completar la compra
 function completePurchase() {
     // Aquí puedes agregar la lógica para procesar la compra
+    saveCartToServer();
     alert("Compra realizada con éxito.");
     localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
     renderCart(); // Renderizar el carrito vacío
@@ -193,14 +207,6 @@ document.querySelectorAll('input[name="shippingType"]').forEach(input => {
     input.addEventListener('change', updateTotal);
 });
 
-// Función para completar la compra
-function completePurchase() {
-    alert("Compra realizada con éxito.");
-    localStorage.removeItem('cart'); // Vaciar el carrito después de la compra
-    renderCart(); // Renderizar el carrito vacío
-    const shippingModal = bootstrap.Modal.getInstance(document.getElementById('shippingModal'));
-    shippingModal.hide();
-}
 
 // Evento para el botón de confirmar compra en el modal
 document.getElementById('confirmPurchaseBtn').addEventListener('click', completePurchase);
@@ -215,7 +221,7 @@ function handlePayment() {
             } else if (paymentMethod.value === "mercadoPago") {
                 window.open("https://www.mercadopago.com", "_blank");
             }
-        }, 500); // Espera 500ms antes de redirigir
+        }, 500); // Espera 500ms antes de redirigir*/
     } else {
         alert("Por favor, selecciona un método de pago.");
     }

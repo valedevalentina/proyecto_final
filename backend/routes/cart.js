@@ -10,7 +10,7 @@ router.use(express.json());
 router.post('/cart', async (req, res) => {
   try {
     const { products } = req.body;
-
+console.log("products: ", products);
     //Obtenemos el token de los headers para obtener el ID del usuario logueado
     const token = req.headers.authorization?.split(' ')[1];
     // Verificar el token
@@ -57,4 +57,5 @@ router.post('/cart', async (req, res) => {
     });
   }
 });
+
 module.exports = router;
